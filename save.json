@@ -1,0 +1,67 @@
+
+            //   let latitudeDelta=res.latitudeDelta ;
+            //   let lat = (res.longitude+(latitudeDelta/2)) + "";
+            //   let latInter ;
+            //   if((res.latitude+1) >9){
+            //     latInter = parseInt(lat.substring(0, 4));
+                
+            //  }else{
+            //    latInter = parseInt(lat.substring(0, 3));
+          
+            //  }
+            //   cul=latInter;
+              
+              
+              
+              // if(getDifference(cul,culb)>=12){
+               
+              // let longitudeDelta =res.longitudeDelta;
+              // if(res.latitudeDelta<1){
+              //   latitudeDelta=res.latitudeDelta+1;
+              // }
+              // if(res.longitudeDelta<1){
+              //   longitudeDelta=res.longitudeDelta+1;
+              // }
+              // let lat = (res.longitude+(latitudeDelta/2)) + "";
+              // let lng = (res.latitude+(longitudeDelta/2)) + "";
+              // let latb = (res.longitude-(latitudeDelta/2)) + "";
+              // let lngb = (res.latitude-(longitudeDelta/2)) + "";
+              // let lngInter ;
+              // let latInter ;
+              // let lngInterb ;
+              // let latInterb ;
+              // if((res.latitude+1) >9){
+              //    latInter = parseInt(lat.substring(0, 4));
+              //    latInterb = parseInt(latb.substring(0, 4));
+              // }else{
+              //   latInter = parseInt(lat.substring(0, 3));
+              //   latInterb = parseInt(latb.substring(0, 3));
+              // }
+              // if((res.longitude+1) >9){
+              //    lngInter = parseInt(lng.substring(0, 4));
+              //    lngInterb = parseInt(lngb.substring(0, 4));
+
+              // }else{
+              //   lngInter = parseInt(lng.substring(0, 3));
+              //   lngInterb = parseInt(lngb.substring(0, 4));
+
+              // }
+              //   setObjectCreate({
+              //     ...objectCreate,
+              //     ...{
+              //       screenX1:latInterb,
+              //       screenY1:lngInterb,
+              //       screenX2:latInter,
+              //       screenY2: lngInter,
+              //     },
+              //   });
+              //   culTwob=lngInterb;
+              //   culb=latInter;
+              //   culTwo=lngInter;
+              //   zoomLevel=Math.log2(360 * (Dimensions.get('window').width / 256 / res.longitudeDelta)) + 1;
+               
+              // }
+                // latOld = getDifference(latInter,lngInter);
+                // lngOld = parseInt(lng.substring(0, 2));
+                
+               

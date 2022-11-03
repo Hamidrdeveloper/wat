@@ -1,0 +1,45 @@
+{
+  "expo": {
+    "name": "Watchlist - Publity",
+    "slug": "Watchlist",
+    "version": "9.0.0",
+    "orientation": "landscape",
+    "icon": "./assets/images/lo.png",
+    "scheme": "myapp",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.react.watchlist.watchlistPro",
+      "buildNumber": "1.4.0",
+      "config": {
+        "googleMapsApiKey": "AIzaSyCu0_rNhV2wN8CGmZR_C2C9ObybaLKI61k"
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#0133aa",
+        "foregroundImage": "./assets/images/lo.png"
+
+      },
+      "package": "com.react.watchlist.watchlistPro",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyCu0_rNhV2wN8CGmZR_C2C9ObybaLKI61k"
+        }
+      }
+    },
+    "web": {
+      "favicon": "./assets/images/playstore.png"
+    }
+  }
+}

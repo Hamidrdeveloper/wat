@@ -10,8 +10,8 @@ import Storage from '../../utils/storeData/index';
 export default function MenuTwo({ openObject, type,onUpdate }) {
   const [isButton, setButton] = React.useState('');
   const [isButtonLan, setButtonLan] = React.useState("EN");
-  const { objects, objectIdFc, objectFc,nameCompany ,lanObject} = React.useContext(ObjectContext);
-  const { objectCreatePage, setObjectCreate, objectCreate } =
+  const { objects, objectIdFc, objectFc,nameCompany ,lanObject,} = React.useContext(ObjectContext);
+  const { objectCreatePage, setObjectCreate, objectCreate,isButtonDrawer ,setButtonDrawer } =
     React.useContext(MapContext);
   const [switchButton, setSwitch] = React.useState(false);
   React.useEffect(() => {
@@ -118,17 +118,17 @@ export default function MenuTwo({ openObject, type,onUpdate }) {
                   justifyContent: "center",
                   borderRadius: 40,
                   backgroundColor:
-                    isButton ==item?.label
+                  isButtonDrawer ==item?.label
                       ? "#0133AA"
                       : "rgba(243, 246, 253,0.5)",
                 }}
                 onPress={() => {
-                  if( isButton ==item?.label){
+                  if( isButtonDrawer ==item?.label){
                     setObjectCreate({ ...objectCreatePage, ...{groupOfPeopleId:''}});
-                    setButton('');
+                    setButtonDrawer('');
                   }else{
                     setObjectCreate({ ...objectCreatePage, ...{groupOfPeopleId: item?.value}});
-                    setButton(item?.label);
+                    setButtonDrawer(item?.label);
                   }
                 
                 }}
@@ -137,7 +137,7 @@ export default function MenuTwo({ openObject, type,onUpdate }) {
                   style={{
                     fontFamily: "Hurme",
                     textAlign: "center",
-                    color: isButton == item?.label ? "#fff" : "#003E77",
+                    color: isButtonDrawer == item?.label ? "#fff" : "#003E77",
                     fontSize: 12,
                   }}
                 >
@@ -299,13 +299,13 @@ export default function MenuTwo({ openObject, type,onUpdate }) {
             </View>
           </View>
         </View>
-        <SpaceH space={15} />
+        <SpaceH space={5} />
         <TouchableOpacity
         onPress={()=>onUpdate()}>
         <Image
                 resizeMode="contain"
                 source={require("../../assets/images/update.png")}
-                style={{ width: 60, height: 60 }}
+                style={{ width: 55, height: 55 }}
               />
               </TouchableOpacity>
         <SpaceH space={40} />

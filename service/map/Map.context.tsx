@@ -17,6 +17,8 @@ interface IMapContext {
   setStopLoopRequest: any;
   setObjectCreatePage: any;
   objectCreatePage: any;
+  isButtonDrawer: any;
+  setButtonDrawer: any;
 }
 export const MapContext = createContext<IMapContext>({} as IMapContext);
 export default function MapContextProvider({
@@ -29,8 +31,9 @@ export default function MapContextProvider({
   const [numberPage, setNumberPage] = useState({ current: 0, pages: 0 });
   const [nextPage, setNextPage] = useState(1);
   const [stopLoopRequest, setStopLoopRequest] = useState(false);
+  const [isButtonDrawer, setButtonDrawer] = useState(false);
 
-  
+
   const [mapObjects, setMapObjects] = useState([]);
   const [mapObjectsSearch, setMapObjectsSearch] = useState([]);
 
@@ -203,7 +206,9 @@ export default function MapContextProvider({
         setObjectCreatePage,
         objectCreatePage,
         abortFc,
-        signalFc
+        signalFc,
+        isButtonDrawer,
+        setButtonDrawer
       }}
     >
       {children}

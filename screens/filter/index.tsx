@@ -8,7 +8,7 @@ import DropDownPicker from "react-native-dropdown-picker";
 import { ObjectContext } from "../../service/object/Object.context";
 
 const TextFilter = styled.Text`
-  font-family: "Hurme Geometric Sans 3";
+  font-family: "Hurme";
   font-style: normal;
   font-weight: 700;
   font-size: 12px;
@@ -17,7 +17,7 @@ const TextFilter = styled.Text`
   flex:1;
 `;
 const TextFilterTo = styled.Text`
-  font-family: "Hurme Geometric Sans 3";
+  font-family: "Hurme";
   font-style: normal;
   font-weight: 700;
   font-size: 12px;
@@ -61,14 +61,14 @@ const BoxBlueButton = styled.TouchableOpacity`
 `;
 
 const TextBlueButtonWith = styled.Text`
-  font-family: "Hurme Geometric Sans 3";
+  font-family: "Hurme";
   font-style: normal;
   font-weight: 700;
   font-size: 12px;
   color: #ffffff;
 `;
 const TextBlueButtonBlue = styled.Text`
-  font-family: "Hurme Geometric Sans 3";
+  font-family: "Hurme";
   font-style: normal;
   font-size: 12px;
   color: #0133aa;
@@ -105,7 +105,7 @@ export default function FilterScreen({ onChangeButton ,typeList}) {
 
   return (
     <>
-      <View style={{ width: `100%`, height: `85%`, padding: 5 }}>
+      <View style={{ width: `100%`, height: `87%`, padding: 5 }}>
         <ScrollView>
           <View style={{ width: typeList?`80%`:`100%`, height: `100%` }}>
             <TouchableOpacity
@@ -368,8 +368,8 @@ export default function FilterScreen({ onChangeButton ,typeList}) {
                 width: `100%`,
               }}
             >
-              <TextFilter>{"Persontype"}</TextFilter>
-              <View>
+              <TextFilter >{"Persontype"}</TextFilter>
+              <View style={{flex:3}}>
                 <View
                   style={{
                     flexDirection: "row",
@@ -377,6 +377,7 @@ export default function FilterScreen({ onChangeButton ,typeList}) {
                   }}
                 >
                   <RadioButton
+                
                     value="1"
                     color={"#0133aa"}
                     status={checked === "1" ? "checked" : "unchecked"}
@@ -387,6 +388,13 @@ export default function FilterScreen({ onChangeButton ,typeList}) {
                     }}
                   />
                   <TouchableOpacity
+                  style={{backgroundColor:'#ffff',shadowColor: "#000",
+                  shadowOffset: {
+                    width: 0,
+                    height: 1,
+                  },
+                  shadowOpacity: 0.22,
+                  shadowRadius: 2.22,borderRadius:8,padding:8}}
                    onPress={() => {
                     setObjectFilter({ ...objectFilter, personType: "All" });
 
@@ -398,33 +406,7 @@ export default function FilterScreen({ onChangeButton ,typeList}) {
                     {"All"}
                   </TextFilterTo>
                   </TouchableOpacity>
-                  <RadioButton
-                    value="2"
-                    color={"#0133aa"}
-                    uncheckedColor={"red"}
-                    status={checked === "2" ? "checked" : "unchecked"}
-                    onPress={() => {
-                      setObjectFilter({
-                        ...objectFilter,
-                        personType: "Tenant",
-                      });
-                      setChecked("2");
-                    }}
-                  />
-                  <TouchableOpacity
-                   onPress={() => {
-                    setObjectFilter({
-                      ...objectFilter,
-                      personType: "Tenant",
-                    });
-                    setChecked("2");
-                  }}>
-                  <TextFilterTo
-                    style={{ color: checked == "2" ? "#0133aa" : "#292D32" }}
-                  >
-                    {"Tenant"}
-                  </TextFilterTo>
-                  </TouchableOpacity>
+                 
                   <RadioButton
                     value="3"
                     color={"#0133aa"}
@@ -438,6 +420,13 @@ export default function FilterScreen({ onChangeButton ,typeList}) {
                     }}
                   />
                    <TouchableOpacity
+                   style={{backgroundColor:'#ffff',shadowColor: "#000",
+                   shadowOffset: {
+                     width: 0,
+                     height: 1,
+                   },
+                   shadowOpacity: 0.22,
+                   shadowRadius: 2.22,borderRadius:8,padding:8}}
                    onPress={() => {
                     setObjectFilter({
                       ...objectFilter,
@@ -452,7 +441,47 @@ export default function FilterScreen({ onChangeButton ,typeList}) {
                   </TextFilterTo>
                   </TouchableOpacity>
                 </View>
-
+                <View
+                  style={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                  }}
+                >
+                <RadioButton
+                    value="2"
+                    color={"#0133aa"}
+                    uncheckedColor={"red"}
+                    status={checked === "2" ? "checked" : "unchecked"}
+                    onPress={() => {
+                      setObjectFilter({
+                        ...objectFilter,
+                        personType: "Tenant",
+                      });
+                      setChecked("2");
+                    }}
+                  />
+                  <TouchableOpacity
+                  style={{backgroundColor:'#ffff',shadowColor: "#000",
+                  shadowOffset: {
+                    width: 0,
+                    height: 1,
+                  },
+                  shadowOpacity: 0.22,
+                  shadowRadius: 2.22,borderRadius:8,padding:8}}
+                   onPress={() => {
+                    setObjectFilter({
+                      ...objectFilter,
+                      personType: "Tenant",
+                    });
+                    setChecked("2");
+                  }}>
+                  <TextFilterTo
+                    style={{ color: checked == "2" ? "#0133aa" : "#292D32" }}
+                  >
+                    {"Tenant"}
+                  </TextFilterTo>
+                  </TouchableOpacity>
+                  </View>
                 <View
                   style={{
                     flexDirection: "row",
@@ -469,6 +498,13 @@ export default function FilterScreen({ onChangeButton ,typeList}) {
                     }}
                   />
                    <TouchableOpacity
+                   style={{backgroundColor:'#ffff',shadowColor: "#000",
+                   shadowOffset: {
+                     width: 0,
+                     height: 1,
+                   },
+                   shadowOpacity: 0.22,
+                   shadowRadius: 2.22,borderRadius:8,padding:8}}
                    onPress={() => {
                     setObjectFilter({ ...objectFilter, personType: "Owner" });
                     setChecked("4");
@@ -479,7 +515,15 @@ export default function FilterScreen({ onChangeButton ,typeList}) {
                     {"Owner"}
                   </TextFilterTo>
                   </TouchableOpacity>
-                  <RadioButton
+                 
+                </View>
+                <View
+                  style={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                  }}
+                >
+                <RadioButton
                     value="5"
                     color={"#0133aa"}
                     status={checked === "5" ? "checked" : "unchecked"}
@@ -492,6 +536,13 @@ export default function FilterScreen({ onChangeButton ,typeList}) {
                     }}
                   />
                    <TouchableOpacity
+                   style={{backgroundColor:'#ffff',shadowColor: "#000",
+                   shadowOffset: {
+                     width: 0,
+                     height: 1,
+                   },
+                   shadowOpacity: 0.22,
+                   shadowRadius: 2.22,borderRadius:8,padding:8}}
                    onPress={() => {
                     setObjectFilter({
                       ...objectFilter,
@@ -505,7 +556,7 @@ export default function FilterScreen({ onChangeButton ,typeList}) {
                     {"Previous tenant"}
                   </TextFilterTo>
                   </TouchableOpacity>
-                </View>
+                  </View>
                 <View
                   style={{
                     flexDirection: "row",
@@ -525,6 +576,13 @@ export default function FilterScreen({ onChangeButton ,typeList}) {
                     }}
                   />
                    <TouchableOpacity
+                   style={{backgroundColor:'#ffff',shadowColor: "#000",
+                   shadowOffset: {
+                     width: 0,
+                     height: 1,
+                   },
+                   shadowOpacity: 0.22,
+                   shadowRadius: 2.22,borderRadius:8,padding:8}}
                    onPress={() => {
                     setObjectFilter({
                       ...objectFilter,

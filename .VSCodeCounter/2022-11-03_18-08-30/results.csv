@@ -1,0 +1,95 @@
+"filename", "language", "TypeScript React", "JavaScript", "TypeScript", "JSON with Comments", "JSON", "comment", "blank", "total"
+"c:\Users\hamid\wachlist\watch\.expo-shared\assets.json", "JSON", 0, 0, 0, 0, 6, 0, 1, 7
+"c:\Users\hamid\wachlist\watch\App.tsx", "TypeScript React", 41, 0, 0, 0, 0, 1, 10, 52
+"c:\Users\hamid\wachlist\watch\app.json", "JSON", 0, 0, 0, 0, 18, 28, 0, 46
+"c:\Users\hamid\wachlist\watch\assets\color\index.tsx", "TypeScript React", 3, 0, 0, 0, 0, 0, 0, 3
+"c:\Users\hamid\wachlist\watch\assets\jso.json", "JSON", 0, 0, 0, 0, 0, 0, 1, 1
+"c:\Users\hamid\wachlist\watch\babel.config.js", "JavaScript", 0, 6, 0, 0, 0, 0, 1, 7
+"c:\Users\hamid\wachlist\watch\components\CustomSwitch\CustomSwitch.tsx", "TypeScript React", 1002, 0, 0, 0, 0, 0, 41, 1043
+"c:\Users\hamid\wachlist\watch\components\CustomSwitch\utils.js", "JavaScript", 0, 8, 0, 0, 0, 0, 1, 9
+"c:\Users\hamid\wachlist\watch\components\EditScreenInfo.tsx", "TypeScript React", 72, 0, 0, 0, 0, 0, 8, 80
+"c:\Users\hamid\wachlist\watch\components\StyledText.tsx", "TypeScript React", 4, 0, 0, 0, 0, 0, 2, 6
+"c:\Users\hamid\wachlist\watch\components\TextInput\index.tsx", "TypeScript React", 49, 0, 0, 0, 0, 0, 5, 54
+"c:\Users\hamid\wachlist\watch\components\Themed.tsx", "TypeScript React", 31, 0, 0, 0, 0, 4, 11, 46
+"c:\Users\hamid\wachlist\watch\components\__tests__\StyledText-test.js", "JavaScript", 0, 7, 0, 0, 0, 0, 4, 11
+"c:\Users\hamid\wachlist\watch\components\filter\index.tsx", "TypeScript React", 235, 0, 0, 0, 0, 0, 2, 237
+"c:\Users\hamid\wachlist\watch\components\introSlide\index.tsx", "TypeScript React", 311, 0, 0, 0, 0, 10, 12, 333
+"c:\Users\hamid\wachlist\watch\components\introSlide\index.type.tsx", "TypeScript React", 107, 0, 0, 0, 0, 0, 4, 111
+"c:\Users\hamid\wachlist\watch\components\introSlide\merge-extradata.d.ts", "TypeScript", 0, 0, 1, 0, 0, 0, 1, 2
+"c:\Users\hamid\wachlist\watch\components\introSlide\merge-extradata.js", "JavaScript", 0, 21, 0, 0, 0, 4, 1, 26
+"c:\Users\hamid\wachlist\watch\components\slider\index.tsx", "TypeScript React", 252, 0, 0, 0, 0, 0, 9, 261
+"c:\Users\hamid\wachlist\watch\components\space\index.tsx", "TypeScript React", 18, 0, 0, 0, 0, 0, 1, 19
+"c:\Users\hamid\wachlist\watch\components\toast\index.tsx", "TypeScript React", 26, 0, 0, 0, 0, 3, 6, 35
+"c:\Users\hamid\wachlist\watch\constants\Colors.ts", "TypeScript", 0, 0, 21, 0, 0, 0, 2, 23
+"c:\Users\hamid\wachlist\watch\constants\Layout.ts", "TypeScript", 0, 0, 10, 0, 0, 0, 3, 13
+"c:\Users\hamid\wachlist\watch\hooks\useCachedResources.ts", "TypeScript", 0, 0, 25, 0, 0, 3, 6, 34
+"c:\Users\hamid\wachlist\watch\hooks\useColorScheme.ts", "TypeScript", 0, 0, 4, 0, 0, 3, 2, 9
+"c:\Users\hamid\wachlist\watch\io.json", "JSON", 0, 0, 0, 0, 73, 0, 1, 74
+"c:\Users\hamid\wachlist\watch\navigation\LinkingConfiguration.ts", "TypeScript", 0, 0, 27, 0, 0, 5, 5, 37
+"c:\Users\hamid\wachlist\watch\navigation\index.tsx", "TypeScript React", 341, 0, 0, 0, 0, 22, 27, 390
+"c:\Users\hamid\wachlist\watch\package-lock.json", "JSON", 0, 0, 0, 0, 26523, 0, 1, 26524
+"c:\Users\hamid\wachlist\watch\package.json", "JSON", 0, 0, 0, 0, 74, 0, 1, 75
+"c:\Users\hamid\wachlist\watch\save.json", "JSON", 0, 0, 0, 0, 0, 55, 13, 68
+"c:\Users\hamid\wachlist\watch\screens\ModalScreen.tsx", "TypeScript React", 30, 0, 0, 0, 0, 1, 5, 36
+"c:\Users\hamid\wachlist\watch\screens\NotFoundScreen.tsx", "TypeScript React", 33, 0, 0, 0, 0, 0, 4, 37
+"c:\Users\hamid\wachlist\watch\screens\TabOneScreen.tsx", "TypeScript React", 29, 0, 0, 0, 0, 0, 4, 33
+"c:\Users\hamid\wachlist\watch\screens\TabTwoScreen.tsx", "TypeScript React", 28, 0, 0, 0, 0, 0, 4, 32
+"c:\Users\hamid\wachlist\watch\screens\code\codeForgetPassword.tsx", "TypeScript React", 201, 0, 0, 0, 0, 0, 7, 208
+"c:\Users\hamid\wachlist\watch\screens\code\index.tsx", "TypeScript React", 273, 0, 0, 0, 0, 3, 7, 283
+"c:\Users\hamid\wachlist\watch\screens\detailPageTwo\index.tsx", "TypeScript React", 186, 0, 0, 0, 0, 15, 6, 207
+"c:\Users\hamid\wachlist\watch\screens\detailPage\index.tsx", "TypeScript React", 178, 0, 0, 0, 0, 15, 12, 205
+"c:\Users\hamid\wachlist\watch\screens\editItem\index.tsx", "TypeScript React", 630, 0, 0, 0, 0, 5, 29, 664
+"c:\Users\hamid\wachlist\watch\screens\editProfile\index.tsx", "TypeScript React", 254, 0, 0, 0, 0, 1, 10, 265
+"c:\Users\hamid\wachlist\watch\screens\filter\index.tsx", "TypeScript React", 578, 0, 0, 0, 0, 0, 14, 592
+"c:\Users\hamid\wachlist\watch\screens\fullImage\index.tsx", "TypeScript React", 58, 0, 0, 0, 0, 5, 8, 71
+"c:\Users\hamid\wachlist\watch\screens\fullMap\index.tsx", "TypeScript React", 67, 0, 0, 0, 0, 0, 7, 74
+"c:\Users\hamid\wachlist\watch\screens\informations\index.tsx", "TypeScript React", 95, 0, 0, 0, 0, 0, 4, 99
+"c:\Users\hamid\wachlist\watch\screens\informations\style\informations.style.tsx", "TypeScript React", 7, 0, 0, 0, 0, 0, 1, 8
+"c:\Users\hamid\wachlist\watch\screens\loactionPartner\index.tsx", "TypeScript React", 145, 0, 0, 0, 0, 3, 7, 155
+"c:\Users\hamid\wachlist\watch\screens\map\AnimationsTwo.tsx", "TypeScript React", 229, 0, 0, 0, 0, 3, 17, 249
+"c:\Users\hamid\wachlist\watch\screens\map\CustomDrawerContent.tsx", "TypeScript React", 260, 0, 0, 0, 0, 0, 4, 264
+"c:\Users\hamid\wachlist\watch\screens\map\addOnMap\idex.tsx", "TypeScript React", 591, 0, 0, 0, 0, 7, 35, 633
+"c:\Users\hamid\wachlist\watch\screens\map\anmition.tsx", "TypeScript React", 184, 0, 0, 0, 0, 5, 10, 199
+"c:\Users\hamid\wachlist\watch\screens\map\index.tsx", "TypeScript React", 898, 0, 0, 0, 0, 18, 24, 940
+"c:\Users\hamid\wachlist\watch\screens\map\menu.tsx", "TypeScript React", 366, 0, 0, 0, 0, 0, 9, 375
+"c:\Users\hamid\wachlist\watch\screens\map\menuTwo.tsx", "TypeScript React", 234, 0, 0, 0, 0, 75, 7, 316
+"c:\Users\hamid\wachlist\watch\screens\map\object.tsx", "TypeScript React", 464, 0, 0, 0, 0, 16, 16, 496
+"c:\Users\hamid\wachlist\watch\screens\map\openItem.tsx", "TypeScript React", 778, 0, 0, 0, 0, 12, 20, 810
+"c:\Users\hamid\wachlist\watch\screens\map\searchOnMap\index.tsx", "TypeScript React", 185, 0, 0, 0, 0, 0, 4, 189
+"c:\Users\hamid\wachlist\watch\screens\map\update.tsx", "TypeScript React", 215, 0, 0, 0, 0, 0, 3, 218
+"c:\Users\hamid\wachlist\watch\screens\map\useDebounce.tsx", "TypeScript React", 16, 0, 0, 0, 0, 7, 4, 27
+"c:\Users\hamid\wachlist\watch\screens\myAddress\index.tsx", "TypeScript React", 222, 0, 0, 0, 0, 4, 11, 237
+"c:\Users\hamid\wachlist\watch\screens\myAddress\style\myAddress.style.tsx", "TypeScript React", 33, 0, 0, 0, 0, 0, 1, 34
+"c:\Users\hamid\wachlist\watch\screens\notification\index.tsx", "TypeScript React", 15, 0, 0, 0, 0, 0, 3, 18
+"c:\Users\hamid\wachlist\watch\screens\profile\index.tsx", "TypeScript React", 485, 0, 0, 0, 0, 2, 9, 496
+"c:\Users\hamid\wachlist\watch\screens\realS\index.tsx", "TypeScript React", 304, 0, 0, 0, 0, 5, 7, 316
+"c:\Users\hamid\wachlist\watch\screens\sampel\sampel.tsx", "TypeScript React", 194, 0, 0, 0, 0, 0, 1, 195
+"c:\Users\hamid\wachlist\watch\screens\signIn\index.tsx", "TypeScript React", 254, 0, 0, 0, 0, 0, 8, 262
+"c:\Users\hamid\wachlist\watch\screens\signUp\index.tsx", "TypeScript React", 208, 0, 0, 0, 0, 1, 10, 219
+"c:\Users\hamid\wachlist\watch\screens\sort\index.tsx", "TypeScript React", 162, 0, 0, 0, 0, 0, 9, 171
+"c:\Users\hamid\wachlist\watch\screens\splash\index.tsx", "TypeScript React", 56, 0, 0, 0, 0, 1, 11, 68
+"c:\Users\hamid\wachlist\watch\screens\splash\indexNumber.tsx", "TypeScript React", 85, 0, 0, 0, 0, 2, 5, 92
+"c:\Users\hamid\wachlist\watch\screens\splash\style\splash.style.tsx", "TypeScript React", 30, 0, 0, 0, 0, 0, 4, 34
+"c:\Users\hamid\wachlist\watch\screens\start\index.tsx", "TypeScript React", 193, 0, 0, 0, 0, 0, 3, 196
+"c:\Users\hamid\wachlist\watch\screens\video\index.tsx", "TypeScript React", 72, 0, 0, 0, 0, 0, 2, 74
+"c:\Users\hamid\wachlist\watch\screens\wellcome\index.tsx", "TypeScript React", 9, 0, 0, 0, 0, 0, 2, 11
+"c:\Users\hamid\wachlist\watch\screens\wellcome\style\welcome.style.tsx", "TypeScript React", 23, 0, 0, 0, 0, 0, 3, 26
+"c:\Users\hamid\wachlist\watch\service\map\Map.action.tsx", "TypeScript React", 14, 0, 0, 0, 0, 0, 3, 17
+"c:\Users\hamid\wachlist\watch\service\map\Map.context.tsx", "TypeScript React", 181, 0, 0, 0, 0, 7, 25, 213
+"c:\Users\hamid\wachlist\watch\service\map\Map.service.tsx", "TypeScript React", 40, 0, 0, 0, 0, 3, 11, 54
+"c:\Users\hamid\wachlist\watch\service\object\Object.action.tsx", "TypeScript React", 45, 0, 0, 0, 0, 0, 9, 54
+"c:\Users\hamid\wachlist\watch\service\object\Object.context.tsx", "TypeScript React", 248, 0, 0, 0, 0, 1, 32, 281
+"c:\Users\hamid\wachlist\watch\service\object\Object.service.tsx", "TypeScript React", 199, 0, 0, 0, 0, 4, 21, 224
+"c:\Users\hamid\wachlist\watch\service\profile\Profile.action.tsx", "TypeScript React", 14, 0, 0, 0, 0, 0, 1, 15
+"c:\Users\hamid\wachlist\watch\service\profile\Profile.context.tsx", "TypeScript React", 67, 0, 0, 0, 0, 1, 5, 73
+"c:\Users\hamid\wachlist\watch\service\profile\Profile.service.tsx", "TypeScript React", 75, 0, 0, 0, 0, 4, 5, 84
+"c:\Users\hamid\wachlist\watch\service\register\Auth.action.tsx", "TypeScript React", 23, 0, 0, 0, 0, 0, 2, 25
+"c:\Users\hamid\wachlist\watch\service\register\Auth.context.tsx", "TypeScript React", 124, 0, 0, 0, 0, 1, 11, 136
+"c:\Users\hamid\wachlist\watch\service\register\Auth.service.tsx", "TypeScript React", 158, 0, 0, 0, 0, 4, 7, 169
+"c:\Users\hamid\wachlist\watch\tsconfig.json", "JSON with Comments", 0, 0, 0, 6, 0, 0, 1, 7
+"c:\Users\hamid\wachlist\watch\types.tsx", "TypeScript React", 25, 0, 0, 0, 0, 4, 7, 36
+"c:\Users\hamid\wachlist\watch\utils\http-common.ts", "TypeScript", 0, 0, 10, 0, 0, 0, 1, 11
+"c:\Users\hamid\wachlist\watch\utils\main.js", "JavaScript", 0, 9, 0, 0, 0, 0, 2, 11
+"c:\Users\hamid\wachlist\watch\utils\storeData\index.tsx", "TypeScript React", 50, 0, 0, 0, 0, 7, 14, 71
+"c:\Users\hamid\wachlist\watch\utils\storeData\key.tsx", "TypeScript React", 4, 0, 0, 0, 0, 0, 1, 5
+"Total", "-", 13316, 51, 98, 6, 26694, 380, 711, 41256

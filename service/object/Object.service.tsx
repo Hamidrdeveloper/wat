@@ -20,7 +20,7 @@ class ObjectDataService {
   oject(e: string) {
     let search='';
     if(e!=null){
-    let search  =`&objectName=${e}`
+     search  =`&objectName=${e}`
     }
     return http
       .get(`/api/v1/watchList/map/search?skip=1&limit=100${search}`)

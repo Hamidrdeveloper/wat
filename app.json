@@ -2,7 +2,7 @@
   "expo": {
     "name": "Watchlist - Publity",
     "slug": "Watchlist",
-    "version": "9.0.0",
+    "version": "14.0.0",
     "orientation": "landscape",
     "icon": "./assets/images/lo.png",
     "scheme": "myapp",
@@ -22,7 +22,7 @@
       "bundleIdentifier": "com.react.watchlist.watchlistPro",
       "buildNumber": "1.4.0",
       "config": {
-        "googleMapsApiKey": "AIzaSyCu0_rNhV2wN8CGmZR_C2C9ObybaLKI61k"
+        "googleMapsApiKey": "AIzaSyB3535z4eKMYIMwZZPPiXpd7UkhmnBT7HA"
       }
     },
     "android": {

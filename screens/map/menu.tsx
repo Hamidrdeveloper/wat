@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import FastImage from 'react-native-fast-image';
 import { ScrollView } from "react-native-gesture-handler";
 import FilterScreen from "../filter";
 import SortScreen from "../sort";
@@ -15,6 +16,7 @@ import { SpaceW } from "../../components/space";
 import { MapContext } from "../../service/map/Map.context";
 import { ObjectContext } from "../../service/object/Object.context";
 import { BASE_URL } from "../../utils/main";
+import { useDebounce } from "./useDebounce";
 const TextInputSearch = styled.TextInput`
   width: 100%;
   box-sizing: border-box;
@@ -61,7 +63,7 @@ const ViewRowSpace = styled.View`
 `;
 
 const TitleItem = styled.Text`
-  font-family: "Hurme Geometric Sans 3";
+  font-family: "Hurme";
   font-style: normal;
   font-weight: 700;
   font-size: 14px;
@@ -69,7 +71,7 @@ const TitleItem = styled.Text`
   color: #003e77;
 `;
 const DetailItem = styled.Text`
-  font-family: "Hurme Geometric Sans 3";
+  font-family: "Hurme";
   font-style: normal;
   font-size: 12px;
   color: #7b93af;
@@ -89,7 +91,7 @@ const CardItem = styled.TouchableOpacity`
   justify-content: space-around;
 `;
 const NumberTitle = styled.Text`
-  font-family: "Hurme Geometric Sans 3";
+  font-family: "Hurme";
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -101,7 +103,7 @@ const NumberTitle = styled.Text`
   color: #003e77;
 `;
 const NumberDetail = styled.Text`
-  font-family: "Hurme Geometric Sans 3";
+  font-family: "Hurme";
   font-style: normal;
   font-weight: 600;
   font-size: 10px;
@@ -113,11 +115,11 @@ const NumberDetail = styled.Text`
   color: #7b93af;
 `;
 const width = Dimensions.get("window").width;
-export default function Menu({ onChange, typeList ,openObject}) {
+export default function Menu({ onChange, typeList }) {
   const [isButton, setButton] = React.useState("list");
   const { MapFc, MapSearchMapFc, mapObjects, setObjectCreate, objectCreate } =
     React.useContext(MapContext);
-  const { objects, objectIdFc, objectFc } = React.useContext(ObjectContext);
+  const { objects, objectIdFc, objectFc,openObject,    reactAnimation  } = React.useContext(ObjectContext);
   const [selectedLetter, setSelectedLetter] = React.useState(-1);
   const [searchText, setSearchText] = React.useState(-1);
 
@@ -132,7 +134,26 @@ export default function Menu({ onChange, typeList ,openObject}) {
     { flag: false },
     { flag: false },
   ]);
-
+  const debouncedSearchTerm = useDebounce(searchText, 1000);
+  useEffect(
+    () => {
+      if (debouncedSearchTerm) {
+        if (typeList) {
+          objectFc(debouncedSearchTerm);
+        } else {
+          setObjectCreate({ ...objectCreate, ...{ searchOnMap: debouncedSearchTerm } });
+        }
+       
+      } else {
+        if (typeList) {
+          objectFc(null);
+        } else {
+          setObjectCreate({ ...objectCreate, ...{ searchOnMap: '' } });
+        }
+      }
+    },
+    [debouncedSearchTerm] // Only call effect if debounced search term changes
+  );
   const onSelect = (index) => {
     let change = itemArray.map((x, i) => {
       if (i == index) {
@@ -210,6 +231,16 @@ export default function Menu({ onChange, typeList ,openObject}) {
       </View>
     );
   };
+ 
+  const keyExtractor = (item) => item._id;
+  const ITEM_HEIGHT = 225; // fixed height of item component
+  const getItemLayout = (data, index) => {
+    return {
+      length: ITEM_HEIGHT,
+      offset: ITEM_HEIGHT * data.length,
+      index,
+    };
+  };
   return (
     <>
       <View
@@ -238,11 +269,7 @@ export default function Menu({ onChange, typeList ,openObject}) {
                 value={searchText}
                 onChangeText={(e) => {
                   setSearchText(e);
-                  if (typeList) {
-                    objectFc(e);
-                  } else {
-                    setObjectCreate({ ...objectCreate, ...{ searchOnMap: e } });
-                  }
+                 
                 }}
               />
               
@@ -308,7 +335,7 @@ export default function Menu({ onChange, typeList ,openObject}) {
             :null}
           </View>
         </View>
-        {isButton == "list" ? (
+        {isButton == "list"&&!reactAnimation ? (
           <View style={{ width: `100%`, padding: 10, height: `85%` }}>
             {typeList ? (
               <>
@@ -317,8 +344,9 @@ export default function Menu({ onChange, typeList ,openObject}) {
                <FlatList
                key={"#"}
                maxToRenderPerBatch={6}
-               keyExtractor={(item) => "_" + item}
+               keyExtractor={keyExtractor}
                data={objects}
+               getItemLayout={getItemLayout}
                renderItem={(item, index) => {
                  return renderItem(item, index);
                }}
@@ -328,8 +356,9 @@ export default function Menu({ onChange, typeList ,openObject}) {
               <FlatList
                 key={"_"}
                 maxToRenderPerBatch={6}
-                keyExtractor={(item) => "_" + item}
+                keyExtractor={keyExtractor}
                 numColumns={3}
+                getItemLayout={getItemLayout}
                 data={objects}
                 renderItem={(item, index) => {
                   return renderItem(item, index);
@@ -342,15 +371,17 @@ export default function Menu({ onChange, typeList ,openObject}) {
               <FlatList
                 key={"#"}
                 maxToRenderPerBatch={6}
-                keyExtractor={(item) => "_" + item}
+                keyExtractor={keyExtractor}
                 data={mapObjects}
+                getItemLayout={getItemLayout}
                 renderItem={(item, index) => {
                   return renderItem(item, index);
                 }}
               />
             )}
           </View>
-        ) : (
+        ) : null}
+          {isButton == "list" ?null:(
           <>
             {isButton != "filter" ? (
               <FilterScreen

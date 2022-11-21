@@ -19,9 +19,11 @@ import MenuTwo from "./menuTwo";
 import addMap from "../../assets/images/addMap.png";
 import findMe from "../../assets/images/findMe.png";
 import UpdateScreen from "./update";
-export default function Animations({ open, openObject,onUpdate,changeTheme,watchLocation }) {
+import { ObjectContext } from "../../service/object/Object.context";
+export default function Animations({setOpenObject, open, openObject,onUpdate,changeTheme,watchLocation }) {
   const [played, setPlayed] = useState(open);
   const [type, setType] = useState(false);
+  const {setReactAnimation} = useContext(ObjectContext)
 
   useEffect(() => {
     setPlayed(open);
@@ -29,6 +31,10 @@ export default function Animations({ open, openObject,onUpdate,changeTheme,watch
 
   const [animation, setAnimation] = useState(new Animated.Value(1));
   const openAnimation = () => {
+    setTimeout(() => {
+      setOpenObject(false);
+    }, 100);
+    
     setPlayed(true);
     Animated.sequence([
       Animated.timing(animation, {
@@ -39,6 +45,9 @@ export default function Animations({ open, openObject,onUpdate,changeTheme,watch
     ]).start(() => {});
   };
   const closeAnimation = () => {
+    setTimeout(() => {
+      setOpenObject(false);
+    }, 100);
     setPlayed(false);
     Animated.sequence([
       Animated.timing(animation, {
@@ -74,6 +83,11 @@ export default function Animations({ open, openObject,onUpdate,changeTheme,watch
             type={type}
             onUpdate={onUpdate}
             openObject={(x) => {
+              setReactAnimation(true);
+              setTimeout(() => {
+                setReactAnimation(false)
+        
+              }, 1500);
               openObject(x);
               closeAnimation();
               setType(x);
@@ -85,6 +99,11 @@ export default function Animations({ open, openObject,onUpdate,changeTheme,watch
               type={type}
               onUpdate={onUpdate}
               openObject={(x) => {
+                setReactAnimation(true);
+                setTimeout(() => {
+                  setReactAnimation(false)
+          
+                }, 1500);
                 openObject(x);
                 closeAnimation();
                 setType(x);

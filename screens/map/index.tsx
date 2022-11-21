@@ -280,9 +280,9 @@ export default function MapScreen({ navigation }) {
   const [isPicture, setPicture] = useState(false);
   const [unPicture, setUnPicture] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
-  const [openObject, setOpenObject] = useState(false);
   const [openMark, setOpenMark] = useState("");
-
+  const [closeOpen, setCloseOpen] = useState(false);
+  
   const [typeList, setTypeList] = useState(false);
   const [updateShow, setUpdateShow] = useState(false);
   const [changeTheme, setChangeTheme] = useState(false);
@@ -299,7 +299,7 @@ export default function MapScreen({ navigation }) {
     abortFc,
     signalFc,
   } = useContext(MapContext);
-  const { objectFc, objects, objectIdFc } = useContext(ObjectContext);
+  const { objectFc, isShowObjectLoading, objectIdFc,setOpenObject,openObject,isShowObject } = useContext(ObjectContext);
 
   const [itemSelect, setItemSelect] = useState(null);
 
@@ -324,7 +324,13 @@ export default function MapScreen({ navigation }) {
       console.warn(err);
     }
   };
-
+  
+  useEffect(() => {
+    if(isShowObject){
+      setOpenObject(true);
+      setOpenMenu(false);
+    }
+  }, [isShowObject]);
   useEffect(() => {
     setTimeout(() => {
       mapRef?.current?.getCamera().then((cam) => {
@@ -533,6 +539,8 @@ export default function MapScreen({ navigation }) {
         >
           {!typeList ? (
             <MapView
+              pitchEnabled={true}
+             
               ref={mapRef}
               initialRegion={INITIAL_REGION}
               style={styles.map}
@@ -599,8 +607,8 @@ export default function MapScreen({ navigation }) {
                 return (
                   <Marker
                     coordinate={{
-                      longitude: data?.location?.lat,
-                      latitude: data?.location?.lng,
+                      longitude: data?.location?.lng,
+                      latitude: data?.location?.lat,
                     }}
                     tracksViewChanges={true}
                     mapType={MAP_TYPES.HYBRID}
@@ -608,28 +616,32 @@ export default function MapScreen({ navigation }) {
                     showsMyLocationButton={true}
                     followsUserLocation={true}
                     title="Test Title"
+                    key={data._id}
                     description="This is the test description"
                   >
+                  
                     {data?.symbolPhoto ? (
                       <Image
-                        style={{ width: 60, height: 60 }}
+                        style={{ width: 75, height: 75 }}
                         resizeMode={"contain"}
                         source={require("../../assets/images/Subtract.png")}
                       />
                     ) : (
                       <Image
-                        style={{ width: 65, height: 60 }}
+                        style={{ width: 75, height: 75 }}
                         resizeMode={"contain"}
                         source={require("../../assets/images/markT.png")}
                       />
                     )}
-                    <Callout>
+                    <Callout
+                    onPress={()=>{
+                      objectIdFc(data?._id);
+                      setOpenMark(data);
+                      setItemSelect(data);}}
+                                        key={data._id}>
                       <View style={{ width: 400 }}>
                         <Pressable
-                          onPress={() => {
-                            objectIdFc(data?._id);
-                            setOpenMark(data);
-                          }}
+                          
                           style={[styles.bubble, { alignSelf: "center" }]}
                         >
                           {/* <Text>A short description</Text> */}
@@ -663,7 +675,7 @@ export default function MapScreen({ navigation }) {
                               <Text
                                 style={{
                                   color: "#003e77",
-                                  fontFamily: "Hurme Geometric Sans 3",
+                                  fontFamily: "Hurme",
                                   fontSize: 14,
                                   width: `100%`,
                                   fontWeight: "700",
@@ -677,7 +689,7 @@ export default function MapScreen({ navigation }) {
                                     width: `100%`,
                                     color: "#7B93AF",
                                     fontSize: 14,
-                                    fontFamily: "Hurme Geometric Sans 3",
+                                    fontFamily: "Hurme",
                                   }}
                                 >
                                   {`${data?.address[0]?.address_on_map}`}
@@ -699,7 +711,7 @@ export default function MapScreen({ navigation }) {
                                   color: "#003E77",
                                   fontWeight: "700",
                                   fontSize: 16,
-                                  fontFamily: "Hurme Geometric Sans 3",
+                                  fontFamily: "Hurme",
                                 }}
                               >
                                 {data?.totalArea}
@@ -711,12 +723,12 @@ export default function MapScreen({ navigation }) {
 
                             <View>
                               <Text style={{ color: "#003E77", fontSize: 16, fontWeight: "700",
-                            fontFamily: "Hurme Geometric Sans 3", }}>
+                            fontFamily: "Hurme", }}>
                                 {data?.officeSpace}
                               </Text>
                               <Text style={{ color: "#7B93AF",
                             fontWeight: "600",
-                            fontSize: 10,fontFamily: "Hurme Geometric Sans 3", }}>
+                            fontSize: 10,fontFamily: "Hurme", }}>
                                 {"Office space"}
                               </Text>
                             </View>
@@ -731,31 +743,43 @@ export default function MapScreen({ navigation }) {
                           >
                             <View>
                               <Text style={{ color: "#003E77", fontSize: 16, fontWeight: "700",
-                            fontFamily: "Hurme Geometric Sans 3", }}>
+                            fontFamily: "Hurme", }}>
                                 {new Date(
                                   data?.constructionYear
                                 ).toLocaleDateString()}
                               </Text>
                               <Text style={{ color: "#7B93AF",fontWeight: "600",
                                   fontSize: 10,
-                                  fontFamily: "Hurme Geometric Sans 3", }}>
+                                  fontFamily: "Hurme", }}>
                                 {"Construction year"}
                               </Text>
                             </View>
 
                             <View>
                               <Text style={{ color: "#003E77", fontSize: 16 , fontWeight: "700",
-                            fontFamily: "Hurme Geometric Sans 3",}}>
+                            fontFamily: "Hurme",}}>
                                 {data?.vacantArea}
                               </Text>
                               <Text style={{ color: "#7B93AF", fontWeight: "600",
                                   fontSize: 10,
-                                  fontFamily: "Hurme Geometric Sans 3",}}>
+                                  fontFamily: "Hurme",}}>
                                 {"Vacant Area"}
                               </Text>
                             </View>
                           </View>
                         </Pressable>
+                        {/* <TouchableOpacity
+                         
+                          onPress={() => {
+                            alert("hi")
+                            objectIdFc(data?._id);
+                            setOpenMark(data);
+                            setItemSelect(data);
+                          }}
+                          style={{width:400,height:290,backgroundColor:'#000',position:'absolute'}}
+                        >
+
+                        </TouchableOpacity> */}
                       </View>
                     </Callout>
                   </Marker>
@@ -860,6 +884,7 @@ export default function MapScreen({ navigation }) {
                 <ActivityIndicator size={"small"} color={"#0133aa"} />
               ) : null}
             </TouchableOpacity>
+            
             <View style={{ width: 10 }} />
             {isLoadingMap ? (
               <Pressable
@@ -902,15 +927,16 @@ export default function MapScreen({ navigation }) {
             open={openObject}
             openMark={openMark}
             setOpenMark={setOpenMark}
+            setCloseOpen={setCloseOpen}
+            closeOpen={closeOpen}
             onChange={(item) => {
-              setOpenObject(false);
               setOpenMenu(false);
               setItemSelect(item);
-
+              
               if (item?.location) {
                 mapRef?.current?.getCamera().then((cam) => {
-                  cam.center.latitude = item?.location?.lng;
-                  cam.center.longitude = item?.location?.lat;
+                  cam.center.latitude = item?.location?.lat;
+                  cam.center.longitude = item?.location?.lng;
                   cam.zoom = 6;
                   mapRef?.current?.animateCamera(cam);
                 });
@@ -926,13 +952,22 @@ export default function MapScreen({ navigation }) {
             }}
             onUpdate={() => setUpdateShow(!updateShow)}
             open={openMenu}
+            setOpenObject={setOpenObject}
             changeTheme={() => setChangeTheme(!changeTheme)}
             openObject={(x) => {
-              setTypeList(x);
               setOpenObject(false);
+              setCloseOpen(true)
+              setTypeList(x);
+            
+            
             }}
           />
         </View>
+        {isShowObjectLoading ? (
+          <View style={{position:'absolute',top:200,width:`100%`,height:100,alignItems:'center',justifyContent:'center'}}>
+                <ActivityIndicator size={"large"} color={"#0133aa"} />
+                </View>
+              ) : null}
       </>
     );
   }

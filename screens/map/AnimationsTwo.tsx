@@ -22,8 +22,9 @@ import addMap from "../../assets/images/addMap.png";
 import findMe from "../../assets/images/findMe.png";
 import OpenItem from "./openItem";
 import Menu from "./menu";
+import { ObjectContext } from "../../service/object/Object.context";
 const width = Dimensions.get("window").width;
-export default function AnimationsTwo({openMark,setOpenMark,open, navigation, onChange, type ,itemSelect}) {
+export default function AnimationsTwo({setCloseOpen,closeOpen,openMark,setOpenMark,open, navigation, onChange, type ,itemSelect}) {
   useEffect(() => {
     if (open) {
       openAnimation();
@@ -42,7 +43,7 @@ export default function AnimationsTwo({openMark,setOpenMark,open, navigation, on
     console.log("openMark",openMark);
     
     if (openMark!="") {
-      setChangeC(false)
+      setOpenObject(false)
       onChange(openMark);
       openAnimation();
     } else {
@@ -53,8 +54,9 @@ export default function AnimationsTwo({openMark,setOpenMark,open, navigation, on
   const [played, setPlayed] = useState(false);
   const [playedOnce, setPlayedOnce] = useState(false);
   const [changeC, setChangeC] = useState(false);
-
+  const {setOpenObject,openObject,setReactAnimation} = useContext(ObjectContext)
   const openAnimationTree = () => {
+    setReactAnimation(true)
     setPlayed(true);
     setPlayedOnce(true);
     Animated.sequence([
@@ -63,9 +65,16 @@ export default function AnimationsTwo({openMark,setOpenMark,open, navigation, on
         duration: 950,
         useNativeDriver: false,
       }),
-    ]).start(() => {});
+    ]).start(() => {
+      setTimeout(() => {
+        setReactAnimation(false)
+
+      }, 1500);
+    });
   };
   const closeAnimationTree = () => {
+    setReactAnimation(true)
+
     setPlayed(false);
     setPlayedOnce(false);
     Animated.sequence([
@@ -74,9 +83,16 @@ export default function AnimationsTwo({openMark,setOpenMark,open, navigation, on
         duration: 950,
         useNativeDriver: false,
       }),
-    ]).start(() => {});
+    ]).start(() => {
+      setTimeout(() => {
+        setReactAnimation(false)
+
+      }, 1500);
+    });
   };
   const openAnimation = () => {
+    setReactAnimation(true)
+
     setPlayed(true);
     Animated.sequence([
       Animated.timing(animation, {
@@ -84,9 +100,16 @@ export default function AnimationsTwo({openMark,setOpenMark,open, navigation, on
         duration: 950,
         useNativeDriver: false,
       }),
-    ]).start(() => {});
+    ]).start(() => {
+      setTimeout(() => {
+        setReactAnimation(false)
+
+      }, 1500);
+    });
   };
   const closeAnimation = () => {
+    setReactAnimation(true)
+
     setPlayed(false);
     Animated.sequence([
       Animated.timing(animation, {
@@ -94,7 +117,12 @@ export default function AnimationsTwo({openMark,setOpenMark,open, navigation, on
         duration: 950,
         useNativeDriver: false,
       }),
-    ]).start(() => {});
+    ]).start(() => {
+      setTimeout(() => {
+        setReactAnimation(false)
+
+      }, 1500);
+    });
   };
 
   const startAnimation = () => {
@@ -130,6 +158,14 @@ export default function AnimationsTwo({openMark,setOpenMark,open, navigation, on
     width: yInterpolateMenuTrue,
  
   };
+
+  useEffect(() => {
+    if(closeOpen){
+      closeAnimation();
+      setCloseOpen(false)
+    }
+  
+  }, [closeOpen])
   return (
     <View style={styles.container}>
      
@@ -139,10 +175,10 @@ export default function AnimationsTwo({openMark,setOpenMark,open, navigation, on
             <Animated.View style={[styles.box, boxStyleMenu]}>
               <Menu
                 typeList={type}
-                openObject={changeC}
+                openObject={openObject}
                 
                 onChange={(item) => {
-                  setChangeC(true)
+                  setOpenObject(true)
                   onChange(item);
                   openAnimation();
                 }}
@@ -151,10 +187,10 @@ export default function AnimationsTwo({openMark,setOpenMark,open, navigation, on
           ) : (
             <View style={[styles.box, { width: 325 }]}>
               <Menu
-              openObject={changeC}
+              openObject={openObject}
                 typeList={type}
                 onChange={(item) => {
-                  setChangeC(false)
+                  setOpenObject(false)
                   onChange(item);
                   openAnimation();
                 }}
@@ -170,7 +206,7 @@ export default function AnimationsTwo({openMark,setOpenMark,open, navigation, on
              itemSelect={itemSelect}
               onChange={() => {
                 setPlayedOnce(false);
-                setChangeC(false)
+                setOpenObject(false)
                 onChange();
                 closeAnimation();
                 setOpenMark("")
@@ -195,7 +231,7 @@ export default function AnimationsTwo({openMark,setOpenMark,open, navigation, on
               }}
               onChange={() => {
                 setPlayedOnce(false);
-                setChangeC(false)
+                setOpenObject(false)
                 onChange();
                 closeAnimation();
                 setOpenMark("")

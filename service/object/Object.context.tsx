@@ -48,6 +48,11 @@ interface IObjectContext {
   lanObject:any;
   baseDataFc:any;
   baseData:any;
+  setOpenObject:any;
+  openObject:any;
+  isShowObjectLoading:any;
+  setReactAnimation:any;
+  reactAnimation:any;
 }
 export const ObjectContext = createContext<IObjectContext>({} as IObjectContext);
 export default function ObjectContextProvider({
@@ -56,6 +61,8 @@ export default function ObjectContextProvider({
   children: ReactElement;
 
 }) {
+  const [openObject, setOpenObject] = useState(false)
+
   const [isRegister, setIsRegister] = useState(false)
   const [idObject, setIdObject] = useState(0)
   const [objects, setObjects] = useState()
@@ -66,9 +73,11 @@ export default function ObjectContextProvider({
   const [nameCompany, setNameCompany] = useState([])
   const [numberCompany, setNumberCompany] = useState()
   const [lanObject, setLanObject] = useState()
+  const [isShowObjectLoading, setIsShowObjectLoading] = useState(false)
+  const [reactAnimation, setReactAnimation] = useState(false)
 
   const [baseData, setBaseData] = useState()
-
+  
   
   const [isShowObjectTwo, setIsShowObjectTwo] = useState(false)
   const {MapSearchMapFc} = useContext(MapContext)
@@ -85,17 +94,23 @@ export default function ObjectContextProvider({
     });
   }
   const objectIdFc=(id)=>{
+    setIsShowObjectLoading(true)
     setIsShowObject(false)
+   
     objectIdAc(id).then((res)=>{
       if(res?.object?.length>0){
         
         setObjectsDetails(res.object[0])
         setIsShowObject(true)
+        setIsShowObjectLoading(false)
+
       }else{
         ToastAndroid.show('Request sent unsuccessfully!', ToastAndroid.SHORT);
       }
     
     });
+    setIsShowObjectLoading(false)
+
     setIsShowObject(false)
   }
   const objectTwoIdFc=(id)=>{
@@ -255,6 +270,7 @@ export default function ObjectContextProvider({
         objectImageFc,
         objects,
         objectIdFc,
+        setOpenObject,
         objectsDetails,
         isShowObject,
         deleteObjectIdFc,
@@ -273,6 +289,10 @@ export default function ObjectContextProvider({
         setLanObject,
         baseDataFc,
   baseData,
+  openObject,
+  isShowObjectLoading,
+  setReactAnimation,
+  reactAnimation,
       }}>
       {children}
     </ObjectContext.Provider>

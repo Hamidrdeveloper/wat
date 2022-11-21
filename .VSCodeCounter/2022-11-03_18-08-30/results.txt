@@ -1,0 +1,173 @@
+Date : 2022-11-03 18:08:30
+Directory : c:\Users\hamid\wachlist\watch
+Total : 93 files,  40165 codes, 380 comments, 711 blanks, all 41256 lines
+
+Languages
++--------------------+------------+------------+------------+------------+------------+
+| language           | files      | code       | comment    | blank      | total      |
++--------------------+------------+------------+------------+------------+------------+
+| JSON               |          7 |     26,694 |         83 |         18 |     26,795 |
+| TypeScript React   |         73 |     13,316 |        282 |        663 |     14,261 |
+| TypeScript         |          7 |         98 |         11 |         20 |        129 |
+| JavaScript         |          5 |         51 |          4 |          9 |         64 |
+| JSON with Comments |          1 |          6 |          0 |          1 |          7 |
++--------------------+------------+------------+------------+------------+------------+
+
+Directories
++---------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                            | files      | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                               |         93 |     40,165 |        380 |        711 |     41,256 |
+| .expo-shared                                                                    |          1 |          6 |          0 |          1 |          7 |
+| assets                                                                          |          2 |          3 |          0 |          1 |          4 |
+| assets\color                                                                    |          1 |          3 |          0 |          0 |          3 |
+| components                                                                      |         15 |      2,144 |         21 |        108 |      2,273 |
+| components\CustomSwitch                                                         |          2 |      1,010 |          0 |         42 |      1,052 |
+| components\TextInput                                                            |          1 |         49 |          0 |          5 |         54 |
+| components\__tests__                                                            |          1 |          7 |          0 |          4 |         11 |
+| components\filter                                                               |          1 |        235 |          0 |          2 |        237 |
+| components\introSlide                                                           |          4 |        440 |         14 |         18 |        472 |
+| components\slider                                                               |          1 |        252 |          0 |          9 |        261 |
+| components\space                                                                |          1 |         18 |          0 |          1 |         19 |
+| components\toast                                                                |          1 |         26 |          3 |          6 |         35 |
+| constants                                                                       |          2 |         31 |          0 |          5 |         36 |
+| hooks                                                                           |          2 |         29 |          6 |          8 |         43 |
+| navigation                                                                      |          2 |        368 |         27 |         32 |        427 |
+| screens                                                                         |         44 |      9,557 |        206 |        371 |     10,134 |
+| screens\code                                                                    |          2 |        474 |          3 |         14 |        491 |
+| screens\detailPage                                                              |          1 |        178 |         15 |         12 |        205 |
+| screens\detailPageTwo                                                           |          1 |        186 |         15 |          6 |        207 |
+| screens\editItem                                                                |          1 |        630 |          5 |         29 |        664 |
+| screens\editProfile                                                             |          1 |        254 |          1 |         10 |        265 |
+| screens\filter                                                                  |          1 |        578 |          0 |         14 |        592 |
+| screens\fullImage                                                               |          1 |         58 |          5 |          8 |         71 |
+| screens\fullMap                                                                 |          1 |         67 |          0 |          7 |         74 |
+| screens\informations                                                            |          2 |        102 |          0 |          5 |        107 |
+| screens\informations\style                                                      |          1 |          7 |          0 |          1 |          8 |
+| screens\loactionPartner                                                         |          1 |        145 |          3 |          7 |        155 |
+| screens\map                                                                     |         12 |      4,420 |        143 |        153 |      4,716 |
+| screens\map\addOnMap                                                            |          1 |        591 |          7 |         35 |        633 |
+| screens\map\searchOnMap                                                         |          1 |        185 |          0 |          4 |        189 |
+| screens\myAddress                                                               |          2 |        255 |          4 |         12 |        271 |
+| screens\myAddress\style                                                         |          1 |         33 |          0 |          1 |         34 |
+| screens\notification                                                            |          1 |         15 |          0 |          3 |         18 |
+| screens\profile                                                                 |          1 |        485 |          2 |          9 |        496 |
+| screens\realS                                                                   |          1 |        304 |          5 |          7 |        316 |
+| screens\sampel                                                                  |          1 |        194 |          0 |          1 |        195 |
+| screens\signIn                                                                  |          1 |        254 |          0 |          8 |        262 |
+| screens\signUp                                                                  |          1 |        208 |          1 |         10 |        219 |
+| screens\sort                                                                    |          1 |        162 |          0 |          9 |        171 |
+| screens\splash                                                                  |          3 |        171 |          3 |         20 |        194 |
+| screens\splash\style                                                            |          1 |         30 |          0 |          4 |         34 |
+| screens\start                                                                   |          1 |        193 |          0 |          3 |        196 |
+| screens\video                                                                   |          1 |         72 |          0 |          2 |         74 |
+| screens\wellcome                                                                |          2 |         32 |          0 |          5 |         37 |
+| screens\wellcome\style                                                          |          1 |         23 |          0 |          3 |         26 |
+| service                                                                         |         12 |      1,188 |         25 |        132 |      1,345 |
+| service\map                                                                     |          3 |        235 |         10 |         39 |        284 |
+| service\object                                                                  |          3 |        492 |          5 |         62 |        559 |
+| service\profile                                                                 |          3 |        156 |          5 |         11 |        172 |
+| service\register                                                                |          3 |        305 |          5 |         20 |        330 |
+| utils                                                                           |          4 |         73 |          7 |         18 |         98 |
+| utils\storeData                                                                 |          2 |         54 |          7 |         15 |         76 |
++---------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++---------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| filename                                                                        | language           | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| c:\Users\hamid\wachlist\watch\.expo-shared\assets.json                          | JSON               |          6 |          0 |          1 |          7 |
+| c:\Users\hamid\wachlist\watch\App.tsx                                           | TypeScript React   |         41 |          1 |         10 |         52 |
+| c:\Users\hamid\wachlist\watch\app.json                                          | JSON               |         18 |         28 |          0 |         46 |
+| c:\Users\hamid\wachlist\watch\assets\color\index.tsx                            | TypeScript React   |          3 |          0 |          0 |          3 |
+| c:\Users\hamid\wachlist\watch\assets\jso.json                                   | JSON               |          0 |          0 |          1 |          1 |
+| c:\Users\hamid\wachlist\watch\babel.config.js                                   | JavaScript         |          6 |          0 |          1 |          7 |
+| c:\Users\hamid\wachlist\watch\components\CustomSwitch\CustomSwitch.tsx          | TypeScript React   |      1,002 |          0 |         41 |      1,043 |
+| c:\Users\hamid\wachlist\watch\components\CustomSwitch\utils.js                  | JavaScript         |          8 |          0 |          1 |          9 |
+| c:\Users\hamid\wachlist\watch\components\EditScreenInfo.tsx                     | TypeScript React   |         72 |          0 |          8 |         80 |
+| c:\Users\hamid\wachlist\watch\components\StyledText.tsx                         | TypeScript React   |          4 |          0 |          2 |          6 |
+| c:\Users\hamid\wachlist\watch\components\TextInput\index.tsx                    | TypeScript React   |         49 |          0 |          5 |         54 |
+| c:\Users\hamid\wachlist\watch\components\Themed.tsx                             | TypeScript React   |         31 |          4 |         11 |         46 |
+| c:\Users\hamid\wachlist\watch\components\__tests__\StyledText-test.js           | JavaScript         |          7 |          0 |          4 |         11 |
+| c:\Users\hamid\wachlist\watch\components\filter\index.tsx                       | TypeScript React   |        235 |          0 |          2 |        237 |
+| c:\Users\hamid\wachlist\watch\components\introSlide\index.tsx                   | TypeScript React   |        311 |         10 |         12 |        333 |
+| c:\Users\hamid\wachlist\watch\components\introSlide\index.type.tsx              | TypeScript React   |        107 |          0 |          4 |        111 |
+| c:\Users\hamid\wachlist\watch\components\introSlide\merge-extradata.d.ts        | TypeScript         |          1 |          0 |          1 |          2 |
+| c:\Users\hamid\wachlist\watch\components\introSlide\merge-extradata.js          | JavaScript         |         21 |          4 |          1 |         26 |
+| c:\Users\hamid\wachlist\watch\components\slider\index.tsx                       | TypeScript React   |        252 |          0 |          9 |        261 |
+| c:\Users\hamid\wachlist\watch\components\space\index.tsx                        | TypeScript React   |         18 |          0 |          1 |         19 |
+| c:\Users\hamid\wachlist\watch\components\toast\index.tsx                        | TypeScript React   |         26 |          3 |          6 |         35 |
+| c:\Users\hamid\wachlist\watch\constants\Colors.ts                               | TypeScript         |         21 |          0 |          2 |         23 |
+| c:\Users\hamid\wachlist\watch\constants\Layout.ts                               | TypeScript         |         10 |          0 |          3 |         13 |
+| c:\Users\hamid\wachlist\watch\hooks\useCachedResources.ts                       | TypeScript         |         25 |          3 |          6 |         34 |
+| c:\Users\hamid\wachlist\watch\hooks\useColorScheme.ts                           | TypeScript         |          4 |          3 |          2 |          9 |
+| c:\Users\hamid\wachlist\watch\io.json                                           | JSON               |         73 |          0 |          1 |         74 |
+| c:\Users\hamid\wachlist\watch\navigation\LinkingConfiguration.ts                | TypeScript         |         27 |          5 |          5 |         37 |
+| c:\Users\hamid\wachlist\watch\navigation\index.tsx                              | TypeScript React   |        341 |         22 |         27 |        390 |
+| c:\Users\hamid\wachlist\watch\package-lock.json                                 | JSON               |     26,523 |          0 |          1 |     26,524 |
+| c:\Users\hamid\wachlist\watch\package.json                                      | JSON               |         74 |          0 |          1 |         75 |
+| c:\Users\hamid\wachlist\watch\save.json                                         | JSON               |          0 |         55 |         13 |         68 |
+| c:\Users\hamid\wachlist\watch\screens\ModalScreen.tsx                           | TypeScript React   |         30 |          1 |          5 |         36 |
+| c:\Users\hamid\wachlist\watch\screens\NotFoundScreen.tsx                        | TypeScript React   |         33 |          0 |          4 |         37 |
+| c:\Users\hamid\wachlist\watch\screens\TabOneScreen.tsx                          | TypeScript React   |         29 |          0 |          4 |         33 |
+| c:\Users\hamid\wachlist\watch\screens\TabTwoScreen.tsx                          | TypeScript React   |         28 |          0 |          4 |         32 |
+| c:\Users\hamid\wachlist\watch\screens\code\codeForgetPassword.tsx               | TypeScript React   |        201 |          0 |          7 |        208 |
+| c:\Users\hamid\wachlist\watch\screens\code\index.tsx                            | TypeScript React   |        273 |          3 |          7 |        283 |
+| c:\Users\hamid\wachlist\watch\screens\detailPageTwo\index.tsx                   | TypeScript React   |        186 |         15 |          6 |        207 |
+| c:\Users\hamid\wachlist\watch\screens\detailPage\index.tsx                      | TypeScript React   |        178 |         15 |         12 |        205 |
+| c:\Users\hamid\wachlist\watch\screens\editItem\index.tsx                        | TypeScript React   |        630 |          5 |         29 |        664 |
+| c:\Users\hamid\wachlist\watch\screens\editProfile\index.tsx                     | TypeScript React   |        254 |          1 |         10 |        265 |
+| c:\Users\hamid\wachlist\watch\screens\filter\index.tsx                          | TypeScript React   |        578 |          0 |         14 |        592 |
+| c:\Users\hamid\wachlist\watch\screens\fullImage\index.tsx                       | TypeScript React   |         58 |          5 |          8 |         71 |
+| c:\Users\hamid\wachlist\watch\screens\fullMap\index.tsx                         | TypeScript React   |         67 |          0 |          7 |         74 |
+| c:\Users\hamid\wachlist\watch\screens\informations\index.tsx                    | TypeScript React   |         95 |          0 |          4 |         99 |
+| c:\Users\hamid\wachlist\watch\screens\informations\style\informations.style.tsx | TypeScript React   |          7 |          0 |          1 |          8 |
+| c:\Users\hamid\wachlist\watch\screens\loactionPartner\index.tsx                 | TypeScript React   |        145 |          3 |          7 |        155 |
+| c:\Users\hamid\wachlist\watch\screens\map\AnimationsTwo.tsx                     | TypeScript React   |        229 |          3 |         17 |        249 |
+| c:\Users\hamid\wachlist\watch\screens\map\CustomDrawerContent.tsx               | TypeScript React   |        260 |          0 |          4 |        264 |
+| c:\Users\hamid\wachlist\watch\screens\map\addOnMap\idex.tsx                     | TypeScript React   |        591 |          7 |         35 |        633 |
+| c:\Users\hamid\wachlist\watch\screens\map\anmition.tsx                          | TypeScript React   |        184 |          5 |         10 |        199 |
+| c:\Users\hamid\wachlist\watch\screens\map\index.tsx                             | TypeScript React   |        898 |         18 |         24 |        940 |
+| c:\Users\hamid\wachlist\watch\screens\map\menu.tsx                              | TypeScript React   |        366 |          0 |          9 |        375 |
+| c:\Users\hamid\wachlist\watch\screens\map\menuTwo.tsx                           | TypeScript React   |        234 |         75 |          7 |        316 |
+| c:\Users\hamid\wachlist\watch\screens\map\object.tsx                            | TypeScript React   |        464 |         16 |         16 |        496 |
+| c:\Users\hamid\wachlist\watch\screens\map\openItem.tsx                          | TypeScript React   |        778 |         12 |         20 |        810 |
+| c:\Users\hamid\wachlist\watch\screens\map\searchOnMap\index.tsx                 | TypeScript React   |        185 |          0 |          4 |        189 |
+| c:\Users\hamid\wachlist\watch\screens\map\update.tsx                            | TypeScript React   |        215 |          0 |          3 |        218 |
+| c:\Users\hamid\wachlist\watch\screens\map\useDebounce.tsx                       | TypeScript React   |         16 |          7 |          4 |         27 |
+| c:\Users\hamid\wachlist\watch\screens\myAddress\index.tsx                       | TypeScript React   |        222 |          4 |         11 |        237 |
+| c:\Users\hamid\wachlist\watch\screens\myAddress\style\myAddress.style.tsx       | TypeScript React   |         33 |          0 |          1 |         34 |
+| c:\Users\hamid\wachlist\watch\screens\notification\index.tsx                    | TypeScript React   |         15 |          0 |          3 |         18 |
+| c:\Users\hamid\wachlist\watch\screens\profile\index.tsx                         | TypeScript React   |        485 |          2 |          9 |        496 |
+| c:\Users\hamid\wachlist\watch\screens\realS\index.tsx                           | TypeScript React   |        304 |          5 |          7 |        316 |
+| c:\Users\hamid\wachlist\watch\screens\sampel\sampel.tsx                         | TypeScript React   |        194 |          0 |          1 |        195 |
+| c:\Users\hamid\wachlist\watch\screens\signIn\index.tsx                          | TypeScript React   |        254 |          0 |          8 |        262 |
+| c:\Users\hamid\wachlist\watch\screens\signUp\index.tsx                          | TypeScript React   |        208 |          1 |         10 |        219 |
+| c:\Users\hamid\wachlist\watch\screens\sort\index.tsx                            | TypeScript React   |        162 |          0 |          9 |        171 |
+| c:\Users\hamid\wachlist\watch\screens\splash\index.tsx                          | TypeScript React   |         56 |          1 |         11 |         68 |
+| c:\Users\hamid\wachlist\watch\screens\splash\indexNumber.tsx                    | TypeScript React   |         85 |          2 |          5 |         92 |
+| c:\Users\hamid\wachlist\watch\screens\splash\style\splash.style.tsx             | TypeScript React   |         30 |          0 |          4 |         34 |
+| c:\Users\hamid\wachlist\watch\screens\start\index.tsx                           | TypeScript React   |        193 |          0 |          3 |        196 |
+| c:\Users\hamid\wachlist\watch\screens\video\index.tsx                           | TypeScript React   |         72 |          0 |          2 |         74 |
+| c:\Users\hamid\wachlist\watch\screens\wellcome\index.tsx                        | TypeScript React   |          9 |          0 |          2 |         11 |
+| c:\Users\hamid\wachlist\watch\screens\wellcome\style\welcome.style.tsx          | TypeScript React   |         23 |          0 |          3 |         26 |
+| c:\Users\hamid\wachlist\watch\service\map\Map.action.tsx                        | TypeScript React   |         14 |          0 |          3 |         17 |
+| c:\Users\hamid\wachlist\watch\service\map\Map.context.tsx                       | TypeScript React   |        181 |          7 |         25 |        213 |
+| c:\Users\hamid\wachlist\watch\service\map\Map.service.tsx                       | TypeScript React   |         40 |          3 |         11 |         54 |
+| c:\Users\hamid\wachlist\watch\service\object\Object.action.tsx                  | TypeScript React   |         45 |          0 |          9 |         54 |
+| c:\Users\hamid\wachlist\watch\service\object\Object.context.tsx                 | TypeScript React   |        248 |          1 |         32 |        281 |
+| c:\Users\hamid\wachlist\watch\service\object\Object.service.tsx                 | TypeScript React   |        199 |          4 |         21 |        224 |
+| c:\Users\hamid\wachlist\watch\service\profile\Profile.action.tsx                | TypeScript React   |         14 |          0 |          1 |         15 |
+| c:\Users\hamid\wachlist\watch\service\profile\Profile.context.tsx               | TypeScript React   |         67 |          1 |          5 |         73 |
+| c:\Users\hamid\wachlist\watch\service\profile\Profile.service.tsx               | TypeScript React   |         75 |          4 |          5 |         84 |
+| c:\Users\hamid\wachlist\watch\service\register\Auth.action.tsx                  | TypeScript React   |         23 |          0 |          2 |         25 |
+| c:\Users\hamid\wachlist\watch\service\register\Auth.context.tsx                 | TypeScript React   |        124 |          1 |         11 |        136 |
+| c:\Users\hamid\wachlist\watch\service\register\Auth.service.tsx                 | TypeScript React   |        158 |          4 |          7 |        169 |
+| c:\Users\hamid\wachlist\watch\tsconfig.json                                     | JSON with Comments |          6 |          0 |          1 |          7 |
+| c:\Users\hamid\wachlist\watch\types.tsx                                         | TypeScript React   |         25 |          4 |          7 |         36 |
+| c:\Users\hamid\wachlist\watch\utils\http-common.ts                              | TypeScript         |         10 |          0 |          1 |         11 |
+| c:\Users\hamid\wachlist\watch\utils\main.js                                     | JavaScript         |          9 |          0 |          2 |         11 |
+| c:\Users\hamid\wachlist\watch\utils\storeData\index.tsx                         | TypeScript React   |         50 |          7 |         14 |         71 |
+| c:\Users\hamid\wachlist\watch\utils\storeData\key.tsx                           | TypeScript React   |          4 |          0 |          1 |          5 |
+| Total                                                                           |                    |     40,165 |        380 |        711 |     41,256 |
++---------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+

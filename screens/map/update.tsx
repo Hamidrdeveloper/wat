@@ -4,7 +4,7 @@ import styled from "styled-components/native";
 import Storage from "../../utils/storeData/index";
 import Constants from 'expo-constants';
 export const TextGray = styled.Text`
-  font-family: "Hurme Geometric Sans 3";
+  font-family: "Hurme";
   font-style: normal;
   font-weight: 600;
   font-size: 20px;
@@ -19,7 +19,7 @@ export const ViewClose = styled.Image`
 `;
 
 export const TitleUpdate = styled.Text`
-  font-family: "Hurme Geometric Sans 3";
+  font-family: "Hurme";
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
@@ -30,7 +30,7 @@ export const TitleUpdate = styled.Text`
   color: #7b93af;
 `;
 export const TitleUpdateBlue = styled.Text`
-  font-family: "Hurme Geometric Sans 3";
+  font-family: "Hurme";
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -177,7 +177,7 @@ export default function UpdateScreen({ open, onChange, navigation }) {
             <View style={{ height: 20 }} />
             <TouchableOpacity
               onPress={() => {
-                if(Constants.manifest?.version=="8.0.0"){
+                if(Constants.manifest?.version=="14.0.0"){
                   alert("You are using the latest update")
                 }else{
                   const link =

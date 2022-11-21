@@ -253,7 +253,7 @@ import Animations from './anmition';
 import AnimationsTwo from './AnimationsTwo';
 let latOld ="";
 let lngOld ="";
-export default function MapScreen({ navigation }) {
+export default function MapScreenvv({ navigation }) {
   const [modelVisible, setModelVisible] = useState(false);
   const [modelVisibleSearch, setModelVisibleSearch] = useState(false);
   const [isPicture, setPicture] = useState(false);

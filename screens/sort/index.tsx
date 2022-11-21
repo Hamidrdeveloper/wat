@@ -7,7 +7,7 @@ import CustomSwitch, { ZeroOneSwitch } from "../../components/CustomSwitch/Custo
 import { MapContext } from "../../service/map/Map.context";
 
 const TextFilter = styled.Text`
-  font-family: "Hurme Geometric Sans 3";
+  font-family: "Hurme";
   font-style: normal;
   font-weight: 700;
   font-size: 12px;
@@ -15,7 +15,7 @@ const TextFilter = styled.Text`
   color: #0133aa;
 `;
 const TextFilterTo = styled.Text`
-  font-family: "Hurme Geometric Sans 3";
+  font-family: "Hurme";
   font-style: normal;
   font-weight: 700;
   font-size: 12px;
@@ -52,14 +52,14 @@ const BoxBlueButton = styled.View`
   justify-content: center;
 `;
 const TextBlueButtonWith = styled.Text`
-  font-family: "Hurme Geometric Sans 3";
+  font-family: "Hurme";
   font-style: normal;
   font-weight: 700;
   font-size: 12px;
   color: #ffffff;
 `;
 const TextBlueButtonBlue = styled.Text`
-  font-family: "Hurme Geometric Sans 3";
+  font-family: "Hurme";
   font-style: normal;
   font-size: 12px;
   color: #0133aa;
@@ -76,14 +76,13 @@ const BlueButtonBlue = styled.TouchableOpacity`
 export default function SortScreen({onChangeButton}) {
   const [checked, setChecked] = React.useState("first");
   const [isSwitchOn, setIsSwitchOn] = React.useState(false);
-  const [isOn, setIsOn] = React.useState(false);
-  const [isOnTwo, setIsOnTwo] = React.useState(false);
   const { MapFc, MapSearchMapFc, objectCreatePage,signalFc, setObjectCreate, objectCreate } =
   React.useContext(MapContext);
   const [objectFilter, setObjectFilter] = React.useState({});
-
+  const [isOn, setIsOn] = React.useState(objectCreate?.descendingYearOfConstruction);
+  const [isOnTwo, setIsOnTwo] = React.useState(objectCreate?.totalAreaBiggest);
   const onChange = () => {
-    setObjectFilter({ ...objectFilter, groupOfPeopleId: !isOn });
+    setObjectFilter({ ...objectFilter, descendingYearOfConstruction: !isOn });
     setIsOn(!isOn);
   };
   const onChangeTwo = () => {
@@ -158,7 +157,7 @@ export default function SortScreen({onChangeButton}) {
         <View style={{ width: `100%`, alignItems: "center" }}>
           <BlueButtonBlue onPress={()=>{
             signalFc()
-            setObjectCreate({ ...objectCreate, ...objectCreatePage });
+            setObjectCreate({ ...objectCreate, ...objectFilter });
             onChangeButton()
             }}>
             <TextBlueButtonWith>Apply</TextBlueButtonWith>

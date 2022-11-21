@@ -15,14 +15,14 @@ const BorderViewText = styled.View`
   width: 100%;
 `;
 const TitleItem = styled.Text`
-  font-family: "Hurme Geometric Sans 3";
+  font-family: "Hurme";
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
   color: #003e77;
 `;
 const TitleItemSmall = styled.Text`
-  font-family: "Hurme Geometric Sans 3";
+  font-family: "Hurme";
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -31,7 +31,7 @@ const TitleItemSmall = styled.Text`
   width: 90%;
 `;
 const DetailItem = styled.Text`
-  font-family: "Hurme Geometric Sans 3";
+  font-family: "Hurme";
   font-style: normal;
   font-weight: 600;
   font-size: 12px;
@@ -104,18 +104,18 @@ const ViewBorderLargeTree = styled.View`
 `;
 
 const TextBorderBige = styled.Text`
-  font-family: "Hurme Geometric Sans 3";
+  font-family: "Hurme";
   font-style: normal;
   font-weight: 600;
-  font-size: 32px;
-  line-height: 32px;
+  font-size: 26px;
+ 
 
   /* identical to box height, or 100% */
 
   color: #003e77;
 `;
 const TextBorderSmale = styled.Text`
-  font-family: "Hurme Geometric Sans 3";
+  font-family: "Hurme";
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
@@ -316,7 +316,7 @@ export default function OpenItem({ onChange, navigation, onLarge }) {
               }}
             >
               <ViewBorder>
-                <TextBorderBige>
+                <TextBorderBige style={{fontSize:26}}>
                   {new Date(parseInt(objectsDetails?.objectType?.yearOfConstruction)).toLocaleDateString()}
                 </TextBorderBige>
                 <TextBorderSmale>{"Construction year"}</TextBorderSmale>
@@ -376,18 +376,18 @@ export default function OpenItem({ onChange, navigation, onLarge }) {
                 justifyContent: "space-between",
               }}
             >
-              <ViewBorderLargeTwo>
+              <ViewBorderLargeMidum>
                 <TextBorderBige>
                   {objectsDetails?.generalNumbers?.buildingCostTotal+" €"}
                 </TextBorderBige>
                 <TextBorderSmale>{"Building Cost Total"}</TextBorderSmale>
-              </ViewBorderLargeTwo>
-              <ViewBorderLargeTree>
+              </ViewBorderLargeMidum>
+              <ViewBorderLargeMidum>
                 <TextBorderBige>
                   {objectsDetails?.objectType?.parkingSpaceUndergroundCarPark}
                 </TextBorderBige>
                 <TextBorderSmale>{"indoor parking spaces"}</TextBorderSmale>
-              </ViewBorderLargeTree>
+              </ViewBorderLargeMidum>
             </View>
             <SpaceH space={10} />
             <View
@@ -497,7 +497,7 @@ export default function OpenItem({ onChange, navigation, onLarge }) {
               <View
                 style={{ flexDirection: "row", justifyContent: "space-around" }}
               >
-                <Text style={{ fontSize: 14,flex:1, color: "#57728E" }}>
+                <Text style={{ fontSize: 14,flex:2, color: "#57728E" }}>
                   {"Tenant"}
                 </Text>
                 <Text style={{ fontSize: 14,flex:1, color: "#57728E" }}>
@@ -505,9 +505,6 @@ export default function OpenItem({ onChange, navigation, onLarge }) {
                 </Text>
                 <Text style={{ fontSize: 14,flex:1, color: "#57728E" }}>
                   {"Monthly rent"}
-                </Text>
-                <Text style={{ fontSize: 14,flex:1, color: "#57728E" }}>
-                  {"office rent "}
                 </Text>
                 <Text style={{ fontSize: 14,flex:1, color: "#57728E" }}>
                   {"End of rent"}
@@ -520,6 +517,8 @@ export default function OpenItem({ onChange, navigation, onLarge }) {
                 data={objectsDetails?.tenants}
                 renderItem={(item) => {
                   let dateOne =new Date(parseInt(item?.item?.rentalEndDate)).toLocaleDateString();
+                  console.log(item?.item);
+                  
                   return (
                   <>
                     <View
@@ -528,17 +527,14 @@ export default function OpenItem({ onChange, navigation, onLarge }) {
                         justifyContent: "space-between",
                       }}
                     >
-                      <Text style={{ fontSize: 14,flex:1, color: "#57728E" }}>
-                        {item?.item?.name}
+                      <Text style={{ fontSize: 14,flex:2, color: "#57728E" }}>
+                        {item?.item?.affiliates?.companyName}
                       </Text>
                       <Text style={{ fontSize: 14,flex:1, color: "#57728E" }}>
                         {item?.item?.totalRentPrice}
                       </Text>
                       <Text style={{ fontSize: 14,flex:1, color: "#57728E" }}>
                         {item?.item?.officeSpace}
-                      </Text>
-                      <Text style={{ fontSize: 14,flex:1, color: "#57728E" }}>
-                        {''}
                       </Text>
                       <Text style={{ fontSize: 14,flex:1, color: "#57728E" }}>
                       {`${dateOne}`}

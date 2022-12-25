@@ -33,8 +33,11 @@ LogBox.ignoreAllLogs();
         } else {
           httpCommon.defaults.headers.common.Authorization = `Bearer ${res}`;
           Storage.retrieveData("lan").then((res) => {
-            Langue.lan = res;
-            setLanObject(res);
+            if(res!=null){
+              Langue.lan = res;
+              setLanObject(res);
+            }
+           
           });
           navigation.navigate("Root");
         }

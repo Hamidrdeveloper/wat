@@ -10,17 +10,42 @@ import Storage from '../../utils/storeData/index';
 export default function MenuTwo({ openObject, type,onUpdate }) {
   const [isButton, setButton] = React.useState('');
   const [isButtonLan, setButtonLan] = React.useState("EN");
-  const { objects, objectIdFc, objectFc,nameCompany ,lanObject,} = React.useContext(ObjectContext);
-  const { objectCreatePage, setObjectCreate, objectCreate,isButtonDrawer ,setButtonDrawer } =
+  const { objects, objectIdFc, objectFc,nameCompany,objectFilterSearch,setObjectFilterSearch ,lanObject,isButtonDrawerObject ,setButtonDrawerObject} = React.useContext(ObjectContext);
+  const { objectCreatePage, setObjectCreate,objectCreate,   signalFc,isButtonDrawer ,setButtonDrawer } =
     React.useContext(MapContext);
   const [switchButton, setSwitch] = React.useState(false);
+  const [switchButtonTitle, setSwitchTitle] = React.useState(false);
+
   React.useEffect(() => {
     setSwitch(type);
   }, [type]);
   React.useEffect(() => {
     setButtonLan(lanObject);
   }, [lanObject]);
-  
+  React.useEffect(() => {
+    if(switchButton){
+      setSwitchTitle(isButtonDrawerObject)
+    }else{
+      setSwitchTitle(isButtonDrawer)
+    }
+    
+  }, [switchButton]);
+  React.useEffect(() => {
+    if(switchButton){
+      setButtonDrawerObject(switchButtonTitle)
+    }else{
+      setButtonDrawer(switchButtonTitle)
+    }
+    
+  }, [switchButtonTitle]);
+  React.useEffect(() => {
+    if(switchButton){
+      setSwitchTitle(isButtonDrawerObject)
+    }else{
+      setSwitchTitle(isButtonDrawer)
+    }
+    
+  }, [objectFilterSearch,objectCreate]);
   return (
     <>
       <View
@@ -51,7 +76,7 @@ export default function MenuTwo({ openObject, type,onUpdate }) {
             onPress={() => {
               setSwitch(false);
               openObject(false);
-              objectFc()
+              
             }}
           >
             {!switchButton ? (
@@ -74,6 +99,7 @@ export default function MenuTwo({ openObject, type,onUpdate }) {
               setSwitch(true);
 
               openObject(true);
+              objectFc()
             }}
           >
             {switchButton ? (
@@ -118,18 +144,39 @@ export default function MenuTwo({ openObject, type,onUpdate }) {
                   justifyContent: "center",
                   borderRadius: 40,
                   backgroundColor:
-                  isButtonDrawer ==item?.label
+                  switchButtonTitle ==item?.label
                       ? "#0133AA"
                       : "rgba(243, 246, 253,0.5)",
                 }}
                 onPress={() => {
-                  if( isButtonDrawer ==item?.label){
-                    setObjectCreate({ ...objectCreatePage, ...{groupOfPeopleId:''}});
-                    setButtonDrawer('');
+                  signalFc()
+                  if(switchButton){
+                  
+                    if( switchButtonTitle ==item?.label){
+                      setButtonDrawerObject('')
+                      setSwitchTitle('');
+                      setObjectFilterSearch({ ...objectFilterSearch, ...{groupOfPeopleId:''}});
+
+                    }else{
+                      setButtonDrawerObject(item?.label)
+                      setSwitchTitle(item?.label);
+                      setObjectFilterSearch({ ...objectFilterSearch, ...{groupOfPeopleId: item?.value}});
+
+                    }
                   }else{
+                  
+                  if( switchButtonTitle ==item?.label){
+                    setButtonDrawer('')
+                    setSwitchTitle('');
+                    setObjectCreate({ ...objectCreatePage, ...{groupOfPeopleId:''}});
+
+                  }else{
+                    setButtonDrawer(item?.label)
+                    setSwitchTitle(item?.label);
                     setObjectCreate({ ...objectCreatePage, ...{groupOfPeopleId: item?.value}});
-                    setButtonDrawer(item?.label);
+
                   }
+                }
                 
                 }}
               >
@@ -137,7 +184,7 @@ export default function MenuTwo({ openObject, type,onUpdate }) {
                   style={{
                     fontFamily: "Hurme",
                     textAlign: "center",
-                    color: isButtonDrawer == item?.label ? "#fff" : "#003E77",
+                    color: switchButtonTitle == item?.label ? "#fff" : "#003E77",
                     fontSize: 12,
                   }}
                 >
@@ -249,19 +296,19 @@ export default function MenuTwo({ openObject, type,onUpdate }) {
                   justifyContent: "center",
                   borderRadius: 40,
                   backgroundColor:
-                    isButtonLan == "EN" ? "#0133AA" : "rgba(243, 246, 253,0.5)",
+                    isButtonLan == "en" ? "#0133AA" : "rgba(243, 246, 253,0.5)",
                 }}
                 onPress={() => {
-                  Langue.lan="EN";
+                  Langue.lan="en";
                   Storage.storeData("lan", "en");
-                  setButtonLan("EN");
+                  setButtonLan("en");
                   objectFc();
                 }}
               >
                 <Text
                   style={{
                     fontFamily: "Hurme",
-                    color: isButtonLan == "EN" ? "#fff" : "#003E77",
+                    color: isButtonLan == "en" ? "#fff" : "#003E77",
                     fontSize: 13,
                   }}
                 >
@@ -277,12 +324,12 @@ export default function MenuTwo({ openObject, type,onUpdate }) {
                   justifyContent: "center",
                   borderRadius: 40,
                   backgroundColor:
-                    isButtonLan == "DE" ? "#0133AA" : "rgba(243, 246, 253,0.5)",
+                    isButtonLan == "de" ? "#0133AA" : "rgba(243, 246, 253,0.5)",
                 }}
                 onPress={() => {
-                  Langue.lan="DE";
+                  Langue.lan="de";
                   Storage.storeData("lan", "de");
-                  setButtonLan("DE");
+                  setButtonLan("de");
                   objectFc();
                 }}
               >

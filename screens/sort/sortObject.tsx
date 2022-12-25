@@ -5,6 +5,7 @@ import { SpaceH, SpaceW } from "../../components/space";
 import { Switch } from "react-native-paper";
 import CustomSwitch, { ZeroOneSwitch } from "../../components/CustomSwitch/CustomSwitch";
 import { MapContext } from "../../service/map/Map.context";
+import { ObjectContext } from "../../service/object/Object.context";
 
 const TextFilter = styled.Text`
   font-family: "Hurme";
@@ -73,11 +74,13 @@ const BlueButtonBlue = styled.TouchableOpacity`
   border-radius: 8px;
 `;
 
-export default function SortScreen({onChangeButton}) {
+export default function SortObjectScreen({onChangeButton}) {
   const [checked, setChecked] = React.useState("first");
   const [isSwitchOn, setIsSwitchOn] = React.useState(false);
   const { MapFc, MapSearchMapFc, objectCreatePage,signalFc, setObjectCreate, objectCreate } =
   React.useContext(MapContext);
+  const {setObjectFilterSearch,objectFilterSearch} =
+  React.useContext(ObjectContext);
   const [objectFilter, setObjectFilter] = React.useState({});
   const [isOn, setIsOn] = React.useState(objectCreate?.descendingYearOfConstruction);
   const [isOnTwo, setIsOnTwo] = React.useState(objectCreate?.totalAreaBiggest);
@@ -177,8 +180,8 @@ export default function SortScreen({onChangeButton}) {
         <SpaceH space={90} />
         <View style={{ width: `100%`, alignItems: "center" }}>
           <BlueButtonBlue onPress={()=>{
-            signalFc()
-            setObjectCreate({ ...objectCreatePage, ...objectFilter });
+            
+            setObjectFilterSearch({ ...objectFilterSearch, ...objectFilter });
             onChangeButton()
             }}>
             <TextBlueButtonWith>Apply</TextBlueButtonWith>

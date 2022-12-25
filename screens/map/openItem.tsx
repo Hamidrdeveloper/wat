@@ -5,7 +5,7 @@ import { SpaceH, SpaceW } from "../../components/space";
 import styled from "styled-components/native";
 import MapView, { MAP_TYPES, Marker } from "react-native-maps";
 import { ObjectContext } from "../../service/object/Object.context";
-import { BASE_URL } from "../../utils/main";
+import { BASE_URL, Langue } from "../../utils/main";
 const BorderViewText = styled.View`
   background: #fbfcff;
   border: 1px solid #eaeaea;
@@ -322,7 +322,7 @@ export default function OpenItem({ onChange, navigation, onLarge }) {
                 <TextBorderSmale>{"Construction year"}</TextBorderSmale>
               </ViewBorder>
               <ViewBorder>
-                <TextBorderBige>{objectsDetails?.objectType?.vacancy}</TextBorderBige>
+                <TextBorderBige>{objectsDetails?.objectType?.vacancy&&objectsDetails?.objectType?.vacancy}</TextBorderBige>
                 <TextBorderSmale>{"Vacancy rate"}</TextBorderSmale>
               </ViewBorder>
               <ViewBorder>
@@ -351,18 +351,18 @@ export default function OpenItem({ onChange, navigation, onLarge }) {
             >
               <ViewBorder>
                 <TextBorderBige>
-                  {objectsDetails?.objectType?.floorsOfConstruction}
+                  {objectsDetails?.objectType?.floorsOfConstruction&&objectsDetails?.objectType?.floorsOfConstruction}
                 </TextBorderBige>
                 <TextBorderSmale>{"Floors"}</TextBorderSmale>
               </ViewBorder>
               <ViewBorder>
-                <TextBorderBige>{objectsDetails?.generalNumbers?.sanitationCostTotal+" €"}
+                <TextBorderBige>{objectsDetails?.generalNumbers?.sanitationCostTotal&&objectsDetails?.generalNumbers?.sanitationCostTotal+" €"}
                 </TextBorderBige>
                 <TextBorderSmale>{"Plot size"}</TextBorderSmale>
               </ViewBorder>
               <ViewBorder>
                 <TextBorderBige>
-                  {objectsDetails?.objectType?.parkingSpaceOuterSurface}
+                  {objectsDetails?.objectType?.parkingSpaceOuterSurface&&objectsDetails?.objectType?.parkingSpaceOuterSurface}
                 </TextBorderBige>
                 <TextBorderSmale>{"Outdoor parking spaces"}</TextBorderSmale>
               </ViewBorder>
@@ -378,13 +378,13 @@ export default function OpenItem({ onChange, navigation, onLarge }) {
             >
               <ViewBorderLargeMidum>
                 <TextBorderBige>
-                  {objectsDetails?.generalNumbers?.buildingCostTotal+" €"}
+                  {objectsDetails?.generalNumbers?.buildingCostTotal&&objectsDetails?.generalNumbers?.buildingCostTotal+" €"}
                 </TextBorderBige>
                 <TextBorderSmale>{"Building Cost Total"}</TextBorderSmale>
               </ViewBorderLargeMidum>
               <ViewBorderLargeMidum>
                 <TextBorderBige>
-                  {objectsDetails?.objectType?.parkingSpaceUndergroundCarPark}
+                  {objectsDetails?.objectType?.parkingSpaceUndergroundCarPark&&objectsDetails?.objectType?.parkingSpaceUndergroundCarPark}
                 </TextBorderBige>
                 <TextBorderSmale>{"indoor parking spaces"}</TextBorderSmale>
               </ViewBorderLargeMidum>
@@ -400,7 +400,7 @@ export default function OpenItem({ onChange, navigation, onLarge }) {
             >
               <ViewBorderLargeMidum>
                 <TextBorderBige>
-                  {objectsDetails?.generalNumbers?.annualNetRentTotal+" €"}
+                  {objectsDetails?.generalNumbers?.annualNetRentTotal&&objectsDetails?.generalNumbers?.annualNetRentTotal+" €"}
                 </TextBorderBige>
                 <TextBorderSmale>{"Annual rent net"}</TextBorderSmale>
               </ViewBorderLargeMidum>
@@ -460,11 +460,11 @@ export default function OpenItem({ onChange, navigation, onLarge }) {
                         />
                         <SpaceW space={10} />
                         <Text style={{ fontSize: 14, color: "#57728E" }}>
-                          {item?.item?.name}
+                          {item?.item?.affiliates?.companyName}
                         </Text>
                       </View>
                       <Text style={{ fontSize: 14, color: "#57728E" }}>
-                        {item?.item?.dateOfPurchase}
+                        {new Date(item?.item?.dateOfPurchaseValue).toLocaleDateString()}
                       </Text>
                     </View>
                   </>
@@ -501,11 +501,12 @@ export default function OpenItem({ onChange, navigation, onLarge }) {
                   {"Tenant"}
                 </Text>
                 <Text style={{ fontSize: 14,flex:1, color: "#57728E" }}>
-                  {"Total space"}
-                </Text>
-                <Text style={{ fontSize: 14,flex:1, color: "#57728E" }}>
                   {"Monthly rent"}
                 </Text>
+                <Text style={{ fontSize: 14,flex:1, color: "#57728E" }}>
+                  {"Total space"}
+                </Text>
+               
                 <Text style={{ fontSize: 14,flex:1, color: "#57728E" }}>
                   {"End of rent"}
                 </Text>
@@ -570,7 +571,10 @@ export default function OpenItem({ onChange, navigation, onLarge }) {
               <FlatList
               maxToRenderPerBatch={6}
                 data={objectsDetails?.remarks}
-                renderItem={({item}) => (
+                renderItem={({item}) => {
+                  if(Langue.lan=='en'){
+                  if(item?.comment_en) 
+                  {return(
                   <>
                     <View
                       style={{
@@ -598,13 +602,50 @@ export default function OpenItem({ onChange, navigation, onLarge }) {
                             paddingRight: 80,
                           }}
                         >
-                          {item?.comment}
+                          {item?.comment_en}
                         </Text>
                       </View>
                     </View>
                     <SpaceH space={10} />
                   </>
-                )}
+                )}else{return null}}else{
+                  if(item?.comment_de) 
+                  {return(
+                  <>
+                    <View
+                      style={{
+                        flexDirection: "row",
+                        justifyContent: "space-between",
+                        paddingLeft: 30,
+                      }}
+                    >
+                      <View
+                        style={{ flexDirection: "row", alignItems: "center" }}
+                      >
+                        <View
+                          style={{
+                            width: 8,
+                            height: 8,
+                            borderRadius: 8,
+                            backgroundColor: "#292D32",
+                          }}
+                        />
+                        <SpaceW space={30} />
+                        <Text
+                          style={{
+                            fontSize: 14,
+                            color: "#57728E",
+                            paddingRight: 80,
+                          }}
+                        >
+                          {item?.comment_de}
+                        </Text>
+                      </View>
+                    </View>
+                    <SpaceH space={10} />
+                  </>
+                )}else{return null}
+                }}}
               />
               <View style={{ flexDirection: "row" , height: 240,}}>
                 <MapView

@@ -26,7 +26,18 @@ export default function App() {
     Hurme:  require("./assets/fonts/Hurme-Bold.ttf"),
   });
   
- 
+  async function changeScreenOrientation() {
+   await ScreenOrientation.unlockAsync()
+   let app = ScreenOrientation.getPlatformOrientationLockAsync()
+  console.log('==============app======================');
+  console.log(ScreenOrientation.OrientationLock);
+  console.log('==============app======================');
+  ScreenOrientation.lockAsync(app?.LANDSCAPE_RIGHT)
+    await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE);
+  }
+  useEffect(() => {
+    changeScreenOrientation();
+  }, [])  
   if (!isLoadingComplete) {
     return <AppLoading/>;
   } else {

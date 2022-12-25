@@ -9,7 +9,7 @@ import Storage from '../../utils/storeData/index';
 export default function CustomDrawerContent({ openObject, type,onUpdate }) {
   const [isButtonLan, setButtonLan] = React.useState("EN");
   const { objects, objectIdFc, objectFc,nameCompany ,lanObject} = React.useContext(ObjectContext);
-  const { objectCreatePage, setObjectCreate, objectCreate,isButtonDrawer ,setButtonDrawer} =
+  const { objectCreatePage, setObjectCreate,   signalFc,isButtonDrawer ,setButtonDrawer} =
     React.useContext(MapContext);
   const [switchButton, setSwitch] = React.useState(false);
   React.useEffect(() => {
@@ -110,6 +110,7 @@ export default function CustomDrawerContent({ openObject, type,onUpdate }) {
                       : "rgba(243, 246, 253,0.5)",
                 }}
                 onPress={() => {
+                  signalFc()
                   if( isButtonDrawer ==item?.label){
                     setObjectCreate({ ...objectCreatePage, ...{groupOfPeopleId:''}});
                     setButtonDrawer('');

@@ -14,7 +14,7 @@ const TextFilter = styled.Text`
   font-size: 12px;
   align-items: center;
   color: #0133aa;
-  flex:1;
+  flex:0.5;
 `;
 const TextFilterTo = styled.Text`
   font-family: "Hurme";
@@ -82,7 +82,7 @@ const BlueButtonBlue = styled.TouchableOpacity`
   border-radius: 8px;
 `;
 
-export default function FilterScreen({ onChangeButton ,typeList}) {
+export default function FilterObjectScreen({ onChangeButton ,typeList}) {
   const [checked, setChecked] = React.useState("first");
   const [objectFilter, setObjectFilter] = React.useState({});
   const [tenant, setTenant] = React.useState("0");
@@ -90,7 +90,7 @@ export default function FilterScreen({ onChangeButton ,typeList}) {
   const [value, setValue] = React.useState(null);
   const [valuePerson, setValuePerson] = React.useState(null);
   const [openPerson, setOpenPerson] = React.useState(false);
-
+  
   const [items, setItems] = React.useState([]);
   const [itemsPerson ,setItemsPerson] = React.useState([ { label:"All", value: "All" },
   { label:"Tenant", value: "Tenant" },
@@ -98,17 +98,17 @@ export default function FilterScreen({ onChangeButton ,typeList}) {
   { label:"Owner", value: "Owner" },
   { label:"Previous Tenant", value: "Previous Tenant" },
   { label:"Previous Owner", value: "Previous Owner" }]);
-  const { nameGroupPeople,setNameGroupPeople,MapSearchMapFc, setObjectCreate, objectCreate,signalFc,objectCreatePage ,setButtonDrawer} =
+  const { MapSearchMapFc, setObjectCreate, objectCreate,signalFc,objectCreatePage } =
     React.useContext(MapContext);
-  const { nameCompany } = React.useContext(ObjectContext);
+  const { nameCompany ,setButtonDrawerObject,nameGroupPeople,setNameGroupPeople,setObjectFilterSearch,objectFilterSearch} = React.useContext(ObjectContext);
   React.useEffect(() => {
     setItems(nameCompany);
   }, [nameCompany]);
   React.useEffect(() => {
     
-      setObjectFilter(objectCreatePage);
-  
-  }, []);
+    setObjectFilter({...objectFilterSearch,skip:1});
+
+}, []);
   React.useEffect(() => {
     if (valuePerson != null) {
       setObjectFilter({
@@ -122,7 +122,6 @@ export default function FilterScreen({ onChangeButton ,typeList}) {
       const found = items?.find(element => element?.value == value);
 
       setNameGroupPeople(found?.label)
-      
       setObjectFilter({ ...objectFilter, groupOfPeopleId: value });
     }
   }, [value]);
@@ -131,7 +130,7 @@ export default function FilterScreen({ onChangeButton ,typeList}) {
     <>
       <View style={{ width: `100%`, height: `87%`, padding: 5 }}>
         <ScrollView>
-          <View style={{ width: typeList?`80%`:`100%`, height: `100%` }}>
+          <View style={{ width: `90%`, height: `100%` }}>
             <View style={{flexDirection:"row",justifyContent:'space-between'}}>
 
            
@@ -414,11 +413,11 @@ export default function FilterScreen({ onChangeButton ,typeList}) {
                 width: `100%`,
               }}
             >
-              <TextFilter >{"Person Type"}</TextFilter>
+              <TextFilter style={{flex:0.7}}>{"Person Type"}</TextFilter>
               <View
                   style={{
                     flexDirection: "row",
-                    width: `70%`,
+                   flex:2.1,
                     alignItems: "center",
                   }}
                 >
@@ -429,7 +428,7 @@ export default function FilterScreen({ onChangeButton ,typeList}) {
               setOpen={setOpenPerson}
               setValue={setValuePerson}
               dropDownDirection="TOP"
-              placeholder={objectCreate?.personType}
+              placeholder={objectFilterSearch?.personType}
               setItems={setItemsPerson}
               style={{ borderColor: "rgba(174, 193, 218, 1)",  }}
             />
@@ -676,12 +675,12 @@ export default function FilterScreen({ onChangeButton ,typeList}) {
                   }}
                 >
                    <SpaceH space={20} />
-            <TextFilter style={{width: `80%`}}>{"Company"}</TextFilter>
+            <TextFilter style={{flex:0.5}}>{"Company"}</TextFilter>
             <SpaceW space={10} />
             <View
                   style={{
                     flexDirection: "row",
-                    width: `70%`,
+                    flex:2.22,
                     alignItems: "center",
                   }}
                 >
@@ -700,20 +699,21 @@ export default function FilterScreen({ onChangeButton ,typeList}) {
             <SpaceH space={20} />
             </View>
             <SpaceH space={20} />
-            <View style={{ width: `100%`, alignItems: "center" }}>
+            
+          </View>
+          <View style={{ width: `100%`, alignItems: "center" }}>
               <BlueButtonBlue
                 style={{}}
                 onPress={() => {
-                  signalFc()
-                  setButtonDrawer(nameGroupPeople)
-                  setObjectCreate({ ...objectCreatePage, ...objectFilter });
+                  setButtonDrawerObject(nameGroupPeople)
+
+                  setObjectFilterSearch({ ...objectFilterSearch, ...objectFilter });
                   onChangeButton();
                 }}
               >
                 <TextBlueButtonWith>Apply</TextBlueButtonWith>
               </BlueButtonBlue>
             </View>
-          </View>
         </ScrollView>
       </View>
     </>

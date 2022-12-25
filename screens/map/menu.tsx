@@ -17,6 +17,8 @@ import { MapContext } from "../../service/map/Map.context";
 import { ObjectContext } from "../../service/object/Object.context";
 import { BASE_URL } from "../../utils/main";
 import { useDebounce } from "./useDebounce";
+import FilterObjectScreen from "../filter/filterObject";
+import SortObjectScreen from "../sort/sortObject";
 const TextInputSearch = styled.TextInput`
   width: 100%;
   box-sizing: border-box;
@@ -117,11 +119,12 @@ const NumberDetail = styled.Text`
 const width = Dimensions.get("window").width;
 export default function Menu({ onChange, typeList }) {
   const [isButton, setButton] = React.useState("list");
-  const { MapFc, MapSearchMapFc, mapObjects, setObjectCreate, objectCreate } =
+  const { signalFc, MapSearchMapFc, mapObjects, setObjectCreate, objectCreate } =
     React.useContext(MapContext);
-  const { objects, objectIdFc, objectFc,openObject,    reactAnimation  } = React.useContext(ObjectContext);
+  const { objectFilterSearch,setObjectFilterSearch,objects, objectIdFc, objectFc,openObject,    reactAnimation  } = React.useContext(ObjectContext);
   const [selectedLetter, setSelectedLetter] = React.useState(-1);
   const [searchText, setSearchText] = React.useState(-1);
+  const [changeSearch, setChangeSearch] = React.useState(false);
 
   const [itemArray, setItemArray] = React.useState([
     { flag: false },
@@ -134,23 +137,28 @@ export default function Menu({ onChange, typeList }) {
     { flag: false },
     { flag: false },
   ]);
-  const debouncedSearchTerm = useDebounce(searchText, 1000);
+  const debouncedSearchTerm = useDebounce(searchText, 1500);
   useEffect(
     () => {
+      if(changeSearch){
+        signalFc();
       if (debouncedSearchTerm) {
         if (typeList) {
-          objectFc(debouncedSearchTerm);
+          setObjectFilterSearch({ ...objectFilterSearch, ...{skip:1, objectName: debouncedSearchTerm } });
         } else {
-          setObjectCreate({ ...objectCreate, ...{ searchOnMap: debouncedSearchTerm } });
+          setObjectCreate({ ...objectCreate, ...{ objectName: debouncedSearchTerm } });
         }
-       
       } else {
         if (typeList) {
-          objectFc(null);
+          setObjectFilterSearch({ ...objectFilterSearch, ...{ objectName: '' } });
         } else {
-          setObjectCreate({ ...objectCreate, ...{ searchOnMap: '' } });
+          setObjectCreate({ ...objectCreate, ...{ skip:1,objectName: '' } });
         }
+
       }
+      setChangeSearch(false)
+
+    }
     },
     [debouncedSearchTerm] // Only call effect if debounced search term changes
   );
@@ -168,13 +176,17 @@ export default function Menu({ onChange, typeList }) {
   useEffect(() => {
     setSearchText("");
   }, [typeList]);
-  const renderItem = ({ item, index }) => {
+  const renderItem = ({ item, index ,flag}) => {
+    let date =new Date(parseInt(item?.constructionYear)).toLocaleDateString()
+    if(item?.constructionYear.length==0){
+      date= "0"
+    }
     return (
       <View
         style={{
-          flex:1,
+          flex:!openObject&&typeList?(1/3):1,
           marginTop: 10,
-          marginRight: 10,
+          marginLeft:5,
           borderColor: item.flag == true ? "#0133AA" : "#ff",
           borderWidth: item.flag == true ? 1 : 0,
           borderRadius: 8,
@@ -219,7 +231,7 @@ export default function Menu({ onChange, typeList }) {
           </ViewRowSpace>
           <ViewRowSpace>
             <View style={{flex: 1}}>
-              <NumberTitle>{new Date(item?.constructionYear).toLocaleDateString()}</NumberTitle>
+              <NumberTitle>{date}</NumberTitle>
               <NumberDetail>{"Construction year"}</NumberDetail>
             </View>
             <View  style={{flex: 1}}>
@@ -268,7 +280,11 @@ export default function Menu({ onChange, typeList }) {
               <TextInputSearch
                 value={searchText}
                 onChangeText={(e) => {
-                  setSearchText(e);
+                  setChangeSearch(true)
+                  
+                    setSearchText(e);
+                  
+                 
                  
                 }}
               />
@@ -293,7 +309,7 @@ export default function Menu({ onChange, typeList }) {
                 }}
               />
             </View>
-            {!typeList?
+            {true?
             <CircleIcon
               onPress={() => {
                 setButton("filter");
@@ -312,7 +328,7 @@ export default function Menu({ onChange, typeList }) {
                 source={require("../../assets/images/sort.png")}
               />
             </CircleIcon>:null}
-            {!typeList?
+            {true?
 
             <CircleIcon
               onPress={() => {
@@ -346,9 +362,9 @@ export default function Menu({ onChange, typeList }) {
                maxToRenderPerBatch={6}
                keyExtractor={keyExtractor}
                data={objects}
-               getItemLayout={getItemLayout}
+           
                renderItem={(item, index) => {
-                 return renderItem(item, index);
+                 return renderItem(item, index,false);
                }}
              />
              </View>:
@@ -358,10 +374,16 @@ export default function Menu({ onChange, typeList }) {
                 maxToRenderPerBatch={6}
                 keyExtractor={keyExtractor}
                 numColumns={3}
-                getItemLayout={getItemLayout}
+                onEndReached={()=>
+                 {if(objects.length>47){
+                  setObjectFilterSearch({...objectFilterSearch,skip:parseInt((objects.length/49)+1)})
+                }}}
+                onEndReachedThreshold={0.5}
+                columnWrapperStyle={{justifyContent:"space-between"}}
                 data={objects}
                 renderItem={(item, index) => {
-                  return renderItem(item, index);
+                  let flag =true;
+                  return renderItem(item, index,flag);
                 }}
               />
               </View>
@@ -373,9 +395,10 @@ export default function Menu({ onChange, typeList }) {
                 maxToRenderPerBatch={6}
                 keyExtractor={keyExtractor}
                 data={mapObjects}
-                getItemLayout={getItemLayout}
+                
                 renderItem={(item, index) => {
-                  return renderItem(item, index);
+                  let flag =true;
+                  return renderItem(item, index,flag);
                 }}
               />
             )}
@@ -383,20 +406,40 @@ export default function Menu({ onChange, typeList }) {
         ) : null}
           {isButton == "list" ?null:(
           <>
-            {isButton != "filter" ? (
-              <FilterScreen
+            {isButton != "filter" ? 
+            <>
+              {!typeList? (
+                <FilterScreen
+                typeList={typeList}
+                  onChangeButton={() => {
+                    setButton("list");
+                  }}
+                />
+              ) :
+              <FilterObjectScreen
               typeList={typeList}
                 onChangeButton={() => {
                   setButton("list");
                 }}
               />
-            ) : (
+}
+</>
+            : (
+              <>
+              {!typeList? (
               <SortScreen
                 onChangeButton={() => {
                   setButton("list");
                 }}
               />
-            )}
+              ) :
+              <SortObjectScreen
+                onChangeButton={() => {
+                  setButton("list");
+                }}
+              />
+}
+              </>)}
           </>
         )}
       </View>

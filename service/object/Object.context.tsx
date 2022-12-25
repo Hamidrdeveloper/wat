@@ -17,6 +17,7 @@ import {
 } from './Object.action';
 import Storage from '../../utils/storeData/index'
 import { MapContext } from '../map/Map.context';
+import { useDebounce } from '../../screens/map/useDebounce';
 
 interface IObjectContext {
   objectFc:any;
@@ -53,6 +54,10 @@ interface IObjectContext {
   isShowObjectLoading:any;
   setReactAnimation:any;
   reactAnimation:any;
+  setPage:any;
+  setObjectFilterSearch:any;
+  objectFilterSearch:any;
+  page:any;
 }
 export const ObjectContext = createContext<IObjectContext>({} as IObjectContext);
 export default function ObjectContextProvider({
@@ -75,12 +80,55 @@ export default function ObjectContextProvider({
   const [lanObject, setLanObject] = useState()
   const [isShowObjectLoading, setIsShowObjectLoading] = useState(false)
   const [reactAnimation, setReactAnimation] = useState(false)
+  const [isButtonDrawerObject, setButtonDrawerObject] = useState('All');
 
   const [baseData, setBaseData] = useState()
-  
+  const [page, setPage] = useState(1);
+
   
   const [isShowObjectTwo, setIsShowObjectTwo] = useState(false)
   const {MapSearchMapFc} = useContext(MapContext)
+  const [nameGroupPeople, setNameGroupPeople] = useState("All");
+  const [objectFilterSearch, setObjectFilterSearch] = useState({
+    vintageFrom: 0,
+    vintageTo: 0,
+    officeSpaceFrom: 0,
+    officeSpaceTo: 0,
+    totalAreaFrom: 0,
+    totalAreaTo: 0,
+    vacancyFrom: 0,
+    vacancyTo: 0,
+    priceFrom: 0,
+    priceTo: 0,
+    sizeFrom: 0,
+    sizeTo: 0,
+    personType: "All",
+    descendingYearOfConstruction: false,
+    totalAreaBiggest: false,
+    skip: 1,
+    limit: 200,
+    groupOfPeopleId: "",
+  });
+  const debouncedSearchTerm = useDebounce(objectFilterSearch, 100);
+  useEffect(
+    () => {
+      if (debouncedSearchTerm) {
+        console.log(objectFilterSearch);
+        if(objectFilterSearch.skip>1){
+
+        }else{
+          setObjects([]);
+        }
+       
+        setTimeout(() => {
+          objectFc("");
+        }, 100);
+       
+      } else {
+      }
+    },
+    [debouncedSearchTerm] // Only call effect if debounced search term changes
+  );
   useEffect(() => {
     numberCompanyFc();
     filterCompanyFc();
@@ -136,18 +184,25 @@ export default function ObjectContextProvider({
   
     numberCompanyAc().then((res)=>{
       setNumberCompany(res)
+      
+
     });
   }
   
   const objectFc =(e:string)=>{
 
-    objectAc(e).then((res)=>{
+    objectAc(objectFilterSearch).then((res)=>{
       if(res==401){
         Storage.removeData("User")
         navigationStatic.navigation.navigate("SignIn");
         
       }
-      setObjects(res?.objects);
+      if(objectFilterSearch.skip>1){
+        setObjects([...objects,...res?.objects]);
+      }else{
+        setObjects(res?.objects);
+      }
+    
     });
     
    }
@@ -250,10 +305,15 @@ export default function ObjectContextProvider({
    const filterCompanyFc =()=>{
     
     filterCompanyAc().then((res)=>{
-    let array =  res?.map((x)=>{
-        return  { label:x?.title, value: x?.id }
-      })
-      setNameCompany(array)
+      let array=[]
+      array=res?.filter((x)=>{
+        if(x?.title.length>3){
+          return x;
+        }
+       
+      }).map(e => {return { label:e?.title, value: e?.id }})
+      array.push({ label:"All", value: "" })
+      setNameCompany(array.reverse())
     });
     
    }
@@ -293,6 +353,13 @@ export default function ObjectContextProvider({
   isShowObjectLoading,
   setReactAnimation,
   reactAnimation,
+  setObjectFilterSearch,
+  objectFilterSearch,
+  setNameGroupPeople,
+  nameGroupPeople,
+  setButtonDrawerObject,
+  isButtonDrawerObject,
+  page, setPage
       }}>
       {children}
     </ObjectContext.Provider>

@@ -1,8 +1,8 @@
 import AuthDataService from "./Object.service";
 import React from "react";
 
-export function objectAc(e:string) {
-  return AuthDataService.oject(e);
+export function objectAc(object:any) {
+  return AuthDataService.oject(object);
 }
 
 export function numberCompanyAc() {

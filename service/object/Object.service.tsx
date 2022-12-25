@@ -17,13 +17,13 @@ class ObjectDataService {
         return false;
       });
   }
-  oject(e: string) {
+  oject(e: any) {
     let search='';
     if(e!=null){
      search  =`&objectName=${e}`
     }
     return http
-      .get(`/api/v1/watchList/map/search?skip=1&limit=100${search}`)
+      .get(`/api/v1/watchList/map/search`,{params:e, })
       .then((res) => {
       
         return res.data;

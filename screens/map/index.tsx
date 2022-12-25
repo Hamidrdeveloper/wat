@@ -254,6 +254,8 @@ const ImageBottomMap = styled.Image`
   width: 48px;
   height: 48px;
 `;
+import Storage from "../../utils/storeData/index";
+
 import { useFonts } from "expo-font";
 import Menu from "./menu";
 import MenuTwo from "./menuTwo";
@@ -332,6 +334,7 @@ export default function MapScreen({ navigation }) {
     }
   }, [isShowObject]);
   useEffect(() => {
+    
     setTimeout(() => {
       mapRef?.current?.getCamera().then((cam) => {
         console.log(cam);
@@ -518,7 +521,7 @@ export default function MapScreen({ navigation }) {
     ],
   };
   function getDifference(a, b) {
-    console.log("Math.abs(a - b)", Math.abs(a - b));
+ 
 
     return Math.abs(a - b);
   }
@@ -549,15 +552,7 @@ export default function MapScreen({ navigation }) {
               scrollEnabled={true}
               rotateEnabled={true}
               onRegionChangeComplete={(res) => {
-                console.log(
-                  "getCamera",
-                  Math.log2(
-                    360 *
-                      (Dimensions.get("window").width /
-                        256 /
-                        res.longitudeDelta)
-                  ) + 1
-                );
+                
                 let zoom = parseInt(
                   Math.log2(
                     360 *
@@ -815,7 +810,7 @@ export default function MapScreen({ navigation }) {
               fetchDetails
               onPress={(data, details = null) => {
                 mapRef?.current?.getCamera().then((cam) => {
-                  console.log(cam);
+                  
                   cam.center.latitude = details?.geometry?.location?.lat;
                   cam.center.longitude = details?.geometry?.location?.lng;
                   cam.zoom = 6;
@@ -937,7 +932,7 @@ export default function MapScreen({ navigation }) {
                 mapRef?.current?.getCamera().then((cam) => {
                   cam.center.latitude = item?.location?.lat;
                   cam.center.longitude = item?.location?.lng;
-                  cam.zoom = 6;
+                  cam.zoom = 15;
                   mapRef?.current?.animateCamera(cam);
                 });
               }

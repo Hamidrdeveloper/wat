@@ -152,7 +152,7 @@ export default function Animations({setOpenObject, open, openObject,onUpdate,cha
         </TouchableOpacity>
       )}
       {!type ? (
-        <View style={{ height: `100%`, width: 48, justifyContent: "flex-end" }}>
+        <View style={{ height: `100%`, width: 48,bottom:15, justifyContent: "flex-end" }}>
           <TouchableOpacity
             onPress={() => {
               // objectTemplateFc();

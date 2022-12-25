@@ -31,12 +31,15 @@ export default function MapContextProvider({
   const [numberPage, setNumberPage] = useState({ current: 0, pages: 0 });
   const [nextPage, setNextPage] = useState(1);
   const [stopLoopRequest, setStopLoopRequest] = useState(false);
-  const [isButtonDrawer, setButtonDrawer] = useState(false);
+  const [isButtonDrawer, setButtonDrawer] = useState('All');
+  const [nameGroupPeople, setNameGroupPeople] = useState("All");
 
-
+  
   const [mapObjects, setMapObjects] = useState([]);
   const [mapObjectsSearch, setMapObjectsSearch] = useState([]);
+  const [flagStart, setFlagStart] = useState([1]);
 
+  
   const [objectCreate, setObjectCreate] = useState({
     zoomLevel: "LEVEL_20",
     screenX1: 0,
@@ -50,6 +53,7 @@ export default function MapContextProvider({
     totalAreaFrom: 0,
     totalAreaTo: 0,
     vacancyFrom: 0,
+    objectName:"",
     vacancyTo: 0,
     priceFrom: 0,
     priceTo: 0,
@@ -70,6 +74,7 @@ export default function MapContextProvider({
     screenY2: 0,
     vintageFrom: 0,
     vintageTo: 0,
+    objectName:"",
     officeSpaceFrom: 0,
     officeSpaceTo: 0,
     totalAreaFrom: 0,
@@ -93,13 +98,24 @@ export default function MapContextProvider({
   // Effect for API call
   useEffect(
     () => {
+      if(flagStart.length==0){
+       
+      }
+    },
+    [flagStart] // Only call effect if debounced search term changes
+  );
+  useEffect(
+    () => {
       if (debouncedSearchTerm) {
-        console.log(objectCreate);
+        
+       console.log('====================================');
+       console.log(objectCreate);
+       console.log('====================================');
         setMapObjects([]);
         setTimeout(() => {
+          
           MapSearchMapFc();
-        }, 100);
-       
+        }, 1000);
       } else {
       }
     },
@@ -118,14 +134,12 @@ export default function MapContextProvider({
     
     ojectSearchMapAc(objectCreate).then((res) => {
       setIsLoadingMap(false);
-      console.log("====================================");
-      console.log(res);
-      console.log("====================================");
+
       setNumberPage(res?.page);
      
         if (res?.page?.pages > 1) {
           setTimeout(() => {
-            MapSearchMapPageFc(2, res?.objects);
+            MapSearchMapPageFc(2, res?.objects,false,res);
 
           }, 2000);
 
@@ -137,21 +151,22 @@ export default function MapContextProvider({
     });
     // setIsLoadingMap(false);
   };
-  const MapSearchMapPageFc = (i, array) => {
+  const MapSearchMapPageFc = (i, array,flag,res) => {
     setIsLoadingMap(true);
 
     // requestInProgress came from redux so it will re-render when the value is updated
-    console.log("================MapSearchMapPageFc============array========"+mapObjects);
-
-    if(mapObjects){
+    if(flag){
       setMapObjects([...mapObjects, ...array]);
-
+      
     }else{
+    
       setMapObjects(array);
 
     }
-    setNextPage(i);
-
+    if(res?.page?.current <= res?.page?.pages){
+      setNextPage(i);
+    }
+    
     // setIsLoadingMap(false);
   };
   useEffect(() => {
@@ -164,17 +179,15 @@ export default function MapContextProvider({
           skip: nextPage,
         },
       };
-      if(stopLoopRequest==false) {
+      if(stopLoopRequest==false&&nextPage!=0) {
     ojectSearchMapAc(obj).then((res) => {
       setIsLoadingMap(false);
-      console.log("================MapSearchMapPageFc====================");
-      console.log(res);
-      console.log("===============MapSearchMapPageFc=====================");
+   
       setNumberPage(res?.page);
-      console.log("arrayMap", mapObjects);
+    
 
-      if (res?.page?.current < res?.page?.pages &&stopLoopRequest==false) {
-        MapSearchMapPageFc(res?.page?.current + 1, res?.objects);
+      if (res?.page?.current <= res?.page?.pages &&stopLoopRequest==false) {
+        MapSearchMapPageFc(res?.page?.current + 1, res?.objects,true,res);
       }
 
       // setMapObjects([...mapObjects, ...res?.objects]);
@@ -186,7 +199,20 @@ export default function MapContextProvider({
     abortAc()
   }
   const signalFc =()=>{
-    signalAc()
+    abortAc()
+    setNumberPage({current:0, pages:0});
+    setNumberPage({current:0, pages:0});
+    
+ 
+    setStopLoopRequest(true);
+    setNextPage(0)
+    setMapObjects([]);
+    
+    
+    setTimeout(() => {
+      signalAc()
+    }, 600);
+    
   }
 
   
@@ -208,7 +234,9 @@ export default function MapContextProvider({
         abortFc,
         signalFc,
         isButtonDrawer,
-        setButtonDrawer
+        setButtonDrawer,
+        setNameGroupPeople,
+        nameGroupPeople
       }}
     >
       {children}

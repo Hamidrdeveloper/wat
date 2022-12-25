@@ -2,7 +2,7 @@
   "expo": {
     "name": "Watchlist - Publity",
     "slug": "Watchlist",
-    "version": "14.0.0",
+    "version": "18.0.0",
     "orientation": "landscape",
     "icon": "./assets/images/lo.png",
     "scheme": "myapp",
@@ -18,18 +18,48 @@
       "**/*"
     ],
     "ios": {
+      "requireFullScreen": true,
       "supportsTablet": true,
+      "isTabletOnly": true,
+      "infoPlist": {
+        "UISupportedInterfaceOrientations": [
+          "UIInterfaceOrientationLandscapeRight",
+          "UIInterfaceOrientationLandscapeLeft",
+          "UIInterfaceOrientationPortrait"
+      ],
+      "UISupportedInterfaceOrientations~ipad": [
+        "UIInterfaceOrientationLandscapeRight",
+        "UIInterfaceOrientationLandscapeLeft",
+        "UIDeviceOrientationPortrait",
+        "UIDeviceOrientationPortraitUpsideDown"
+      ]
+      },
       "bundleIdentifier": "com.react.watchlist.watchlistPro",
       "buildNumber": "1.4.0",
       "config": {
         "googleMapsApiKey": "AIzaSyB3535z4eKMYIMwZZPPiXpd7UkhmnBT7HA"
       }
     },
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "deploymentTarget": "13.0"
+          }
+        }
+      ],
+      [
+        "expo-screen-orientation",
+        {
+          "initialOrientation": "LANDSCAPE"
+        }
+      ]
+    ],
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#0133aa",
         "foregroundImage": "./assets/images/lo.png"
-
       },
       "package": "com.react.watchlist.watchlistPro",
       "config": {
@@ -40,6 +70,11 @@
     },
     "web": {
       "favicon": "./assets/images/playstore.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "4410f14f-f5d7-4a90-aa1d-70afaf08cd61"
+      }
     }
   }
 }

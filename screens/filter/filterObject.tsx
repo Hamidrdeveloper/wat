@@ -6,7 +6,24 @@ import { RadioButton } from "react-native-paper";
 import { MapContext } from "../../service/map/Map.context";
 import DropDownPicker from "react-native-dropdown-picker";
 import { ObjectContext } from "../../service/object/Object.context";
+import DateTimePicker from '@react-native-community/datetimepicker';
 
+const TextFilterInputVintage = styled(View)`
+  box-sizing: border-box;
+  width: 70px;
+  height: 40px;
+  background: #ffffff;
+  align-items: center;
+  justify-content: center;
+  /* Gray/500 */
+
+  border: 1px solid #6783a0;
+  /* White BTN */
+
+  box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  flex:1;
+`;
 const TextFilter = styled.Text`
   font-family: "Hurme";
   font-style: normal;
@@ -84,7 +101,8 @@ const BlueButtonBlue = styled.TouchableOpacity`
 
 export default function FilterObjectScreen({ onChangeButton ,typeList}) {
   const [checked, setChecked] = React.useState("first");
-  const [objectFilter, setObjectFilter] = React.useState({});
+  const [objectFilter, setObjectFilter] = React.useState({ vintageFrom: '',
+  vintageTo: '',});
   const [tenant, setTenant] = React.useState("0");
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState(null);
@@ -206,21 +224,74 @@ export default function FilterObjectScreen({ onChangeButton ,typeList}) {
               }}
             >
               <TextFilter>{"Vintage"}</TextFilter>
-              <TextFilterInput
-              value={objectFilter?.vintageFrom}
+              <TextFilterInputVintage>
+              <DateTimePicker
+                themeVariant  ="dark"
+          testID="dateTimePicker"
+          style={{width: 150,height: 30}}
+          value={objectFilter?.vintageFrom.length>5?new Date(parseInt(objectFilter?.vintageFrom)):new Date()}
+          mode="date"
+          dateFormat="shortdate"
+          textColor="black"
+          display="default"
+          onChange={(event, dateTimePicker) => {
+            let date = new Date(dateTimePicker);
+            const r = Date.UTC(
+              date.getUTCFullYear(),
+              date.getUTCMonth(),
+              date.getUTCDate(),
+              date.getUTCHours(),
+              date.getUTCMinutes(),
+              date.getUTCSeconds(),
+              date.getUTCMilliseconds(),
+            );
+            console.log(r);
+            
+            setObjectFilter({ ...objectFilter, vintageFrom:`${r}`});
+          }}
+        />
+        </TextFilterInputVintage>
+              {/* <TextFilterInputVintage
+               type={'datetime'}
+               options={{
+                 format: 'YYYY/MM/DD'
+               }}
+              value={tenant}
                 onChangeText={(e) => {
-                  setObjectFilter({ ...objectFilter, vintageFrom: e });
+                 let date = new Date(e)
+                 console.log(date.toLocaleDateString());
+                 
+                  setTenant(e);
                 }}
-              />
+              /> */}
               <SpaceW space={8} />
               <TextFilterTo>{"To"}</TextFilterTo>
               <SpaceW space={8} />
-              <TextFilterInput
-                value={objectFilter?.vintageTo}
-                onChangeText={(e) => {
-                  setObjectFilter({ ...objectFilter, vintageTo: e });
-                }}
-              />
+              <TextFilterInputVintage>
+              <DateTimePicker
+          testID="dateTimePicker"
+          style={{width: 150,height: 30}}
+          value={objectFilter?.vintageTo.length>5?new Date(parseInt(objectFilter?.vintageTo)):new Date()}
+          dateFormat="shortdate"
+          mode="date"
+          textColor="black"
+          display="default"
+          onChange={(event, dateTimePicker) => {
+            let date = new Date(dateTimePicker);
+            const r = Date.UTC(
+              date.getUTCFullYear(),
+              date.getUTCMonth(),
+              date.getUTCDate(),
+              date.getUTCHours(),
+              date.getUTCMinutes(),
+              date.getUTCSeconds(),
+              date.getUTCMilliseconds(),
+            );
+            
+            setObjectFilter({ ...objectFilter, vintageTo:`${r}`});
+          }}
+        />
+           </TextFilterInputVintage>
             </View>
             <SpaceH space={30} />
             <View

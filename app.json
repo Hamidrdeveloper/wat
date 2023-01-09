@@ -2,7 +2,7 @@
   "expo": {
     "name": "Watchlist - Publity",
     "slug": "Watchlist",
-    "version": "18.0.0",
+    "version": "19.0.0",
     "orientation": "landscape",
     "icon": "./assets/images/lo.png",
     "scheme": "myapp",

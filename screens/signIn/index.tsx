@@ -196,6 +196,7 @@ export default function SignInScreen({navigation}) {
         <SpaceH space={25}/>
         <ButtonClick
          onPress={()=>{
+          
           loginFc(password,email)}}>
           <TextButton>{"Login"}</TextButton>
         </ButtonClick>

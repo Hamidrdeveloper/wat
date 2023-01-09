@@ -177,7 +177,7 @@ export default function UpdateScreen({ open, onChange, navigation }) {
             <View style={{ height: 20 }} />
             <TouchableOpacity
               onPress={() => {
-                if(Constants.manifest?.version=="18.0.0"){
+                if(Constants.manifest?.version=="19.0.0"){
                   alert("You are using the latest update")
                 }else{
                   const link =

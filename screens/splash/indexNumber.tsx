@@ -28,10 +28,10 @@ LogBox.ignoreAllLogs();
       Storage.retrieveData("User").then((res) => {
         console.log("retrieveData", res);
 
-        if (res == null) {
+        if (res != null) {
           navigation.navigate("SignIn");
         } else {
-          httpCommon.defaults.headers.common.Authorization = `Bearer ${res}`;
+          httpCommon.defaults.headers.common.Authorization = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsdWIiOiIxZDZkNGY2Zi1hNDYzLTQwMDYtODQ0Yy00YmJlMzdmMzdmOTIiLCJzdWIiOiJiYWU1ZTJmNi02MDAzLTQ3NDItYTU1ZS00N2QyMDRhY2UxMjciLCJpYXQiOjE2NzIwOTczNDIsImV4cCI6MTY3NDY4OTM0MiwiaXNzIjoid3d3LnB1YmxpdHkuY29tIn0.PdUQ_9ajkqIbNIDLlJO0BB1fcOqsSyLkQbXO5zdDPaA`;
           Storage.retrieveData("lan").then((res) => {
             if(res!=null){
               Langue.lan = res;

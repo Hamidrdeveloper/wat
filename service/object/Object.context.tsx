@@ -121,7 +121,11 @@ export default function ObjectContextProvider({
         }
        
         setTimeout(() => {
+          Storage.retrieveData("User").then((res) => {
+            if (res != null) {
           objectFc("");
+            }
+        })
         }, 100);
        
       } else {

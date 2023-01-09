@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, Text, TouchableOpacity, View, FlatList } from "react-native";
+import { Image, Text, TouchableOpacity, View, FlatList, Dimensions } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { SpaceH, SpaceW } from "../../components/space";
 import styled from "styled-components/native";
@@ -195,11 +195,16 @@ export default function OpenItem({ onChange, navigation, onLarge }) {
   if (objectsDetails?.altimeter?.length > 0) {
     altimeter = objectsDetails?.altimeter[0];
   }
+  const [width, setWidth] = React.useState(0);
 
+  function handleLayout(event) {
+    setWidth(event.nativeEvent.layout.width);
+  }
   return (
     <>
       {objectsDetails != null ? (
         <View
+          onLayout={handleLayout}
           style={{
             width: `100%`,
             alignItems: "center",
@@ -213,8 +218,8 @@ export default function OpenItem({ onChange, navigation, onLarge }) {
         >
           <ScrollView style={{ width: `100%` }}>
             <Image
-              resizeMode="stretch"
-              style={{ width: `100%`, height: 345 }}
+              resizeMode="contain"
+              style={{ width: `100%`, height: (width/3)+120}}
               source={{
                 uri: `${BASE_URL}/api/v1/files/${objectsDetails?.symbolPhoto}`,
               }}

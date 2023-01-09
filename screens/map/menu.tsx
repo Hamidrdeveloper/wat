@@ -362,7 +362,10 @@ export default function Menu({ onChange, typeList }) {
                maxToRenderPerBatch={6}
                keyExtractor={keyExtractor}
                data={objects}
-           
+               onEndReached={()=>
+                {if(objects.length>47){
+                 setObjectFilterSearch({...objectFilterSearch,skip:parseInt((objects.length/49)+1)})
+               }}}
                renderItem={(item, index) => {
                  return renderItem(item, index,false);
                }}
